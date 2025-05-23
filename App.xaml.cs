@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using SQLitePCL;
 using System.Windows;
 
 namespace StockFilterToolsV1
@@ -9,6 +8,10 @@ namespace StockFilterToolsV1
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Batteries_V2.Init();
+        }
     }
 
 }
