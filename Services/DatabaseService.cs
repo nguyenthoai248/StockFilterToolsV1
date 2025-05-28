@@ -65,31 +65,32 @@ namespace StockFilterToolsV1.Services
             return dt;
         }
 
-        public DataTable GetBalanceSheetBySymbol(string symbol)
+        public async Task<DataTable> GetBalanceSheetBySymbol(string symbol)
         {
             var dt = new DataTable();
-            var conn = new SqliteConnection(connectionString);
-            conn.Open();
-            using var cmd = conn.CreateCommand();
+            await using var conn = new SqliteConnection(connectionString);
+            await conn.OpenAsync();
+            await using var cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT Symbol, ResponseJson FROM BalanceSheets WHERE Symbol = $symbol ORDER BY Symbol";
             cmd.Parameters.AddWithValue("$symbol", symbol);
 
-            using var reader = cmd.ExecuteReader();
+            await using var reader = await cmd.ExecuteReaderAsync();
             dt.Load(reader);
 
             return dt;
         }
 
-        public DataTable GetIncomeStatementsBySymbol(string symbol)
+        public async Task<DataTable> GetIncomeStatementsBySymbol(string symbol)
         {
             var dt = new DataTable();
-            var conn = new SqliteConnection(connectionString);
-            conn.Open();
-            using var cmd = conn.CreateCommand();
+            await using var conn = new SqliteConnection(connectionString);
+            await conn.OpenAsync();
+
+            await using var cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT Symbol, ResponseJson FROM IncomeStatements WHERE Symbol = $symbol ORDER BY Symbol";
             cmd.Parameters.AddWithValue("$symbol", symbol);
 
-            using var reader = cmd.ExecuteReader();
+            await using var reader = await cmd.ExecuteReaderAsync();
             dt.Load(reader);
 
             return dt;

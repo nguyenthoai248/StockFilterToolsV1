@@ -1,8 +1,10 @@
-﻿using StockFilterToolsV1.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using StockFilterToolsV1.Models;
+using StockFilterToolsV1.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,54 +14,23 @@ using System.Windows.Media;
 
 namespace StockFilterToolsV1.ViewModels
 {
-    class MainViewModel : INotifyPropertyChanged
+    partial class MainViewModel : ObservableObject
     {
-
-        private ObservableCollection<DataGridColumn> _columns;
-        public ObservableCollection<DataGridColumn> Columns
-        {
-            get => _columns;
-            set { _columns = value; OnPropertyChanged(nameof(Columns)); }
-        }
-
-        private ObservableCollection<DataRow> _rows;
-        public ObservableCollection<DataRow> Rows
-        {
-            get => _rows;
-            set { _rows = value; OnPropertyChanged(nameof(Rows)); }
-        }
-
-        private string _stockCode;
-
-        public string StockCode
-        {
-            get => _stockCode;
-            set
-            {
-                _stockCode = value;
-                OnPropertyChanged();
-                CommandManager.InvalidateRequerySuggested();
-            }
-        }
-
-        private bool _isGridVisible;
-        public bool IsGridVisible
-        {
-            get => _isGridVisible;
-            set
-            {
-                if (_isGridVisible != value)
-                {
-                    _isGridVisible = value;
-                    OnPropertyChanged(nameof(IsGridVisible));
-                }
-            }
-        }
+        private readonly SyncService _syncService;
+        private readonly DatabaseService _databaseService;
+        [ObservableProperty] private ObservableCollection<DataGridColumn> columns = new();
+        [ObservableProperty] private ObservableCollection<DataRow> rows = new();
+        [ObservableProperty] private string companyName = string.Empty;
+        [ObservableProperty] private string comStockCode = string.Empty;
+        [ObservableProperty] private string stockCode = string.Empty;
+        [ObservableProperty] private bool isGridVisible;
+        [ObservableProperty] private bool isLoading;
 
         // ViewModels/MainViewModel.cs
         public ObservableCollection<DataGridColumn> IndustryColumns { get; set; }
 
         public ICommand FetchCommand { get; }
+        public ICommand SyncDataCommand { get; }
 
         public MainViewModel()
         {
@@ -68,77 +39,104 @@ namespace StockFilterToolsV1.ViewModels
             _rows = new ObservableCollection<DataRow>();
             IndustryColumns = new ObservableCollection<DataGridColumn>();
 
-            FetchCommand = new RelayCommand(async param =>
+            FetchCommand = new AsyncRelayCommand<string>(async param =>
             {
-                string symbol = param as string;
+                IsLoading = true;
+                await Task.Yield();
+                string symbol = param;
                 if (!string.IsNullOrWhiteSpace(symbol))
                     await LoadDataAsync(symbol);
             },
-        param => !string.IsNullOrWhiteSpace(param as string));
+            param => !string.IsNullOrWhiteSpace(param));
+            _syncService = new SyncService();
+            _databaseService = new DatabaseService();
+            SyncDataCommand = new RelayCommand(SyncData);
+        }
+
+        private async void SyncData(object obj)
+        {
+            await _syncService.SyncAllData();
         }
 
         public ObservableCollection<ManufacturingBusinessModel> manufacturingBusinessModels { get; set; } = new ObservableCollection<ManufacturingBusinessModel>();
 
         private async Task LoadDataAsync(string symbol)
         {
+            IsGridVisible = false;
             IndustryColumns.Clear();
-            using (var client = new HttpClient())
+            try
             {
-                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
-                client.DefaultRequestHeaders.Add("origin", "https://iboard.ssi.com.vn");
-                client.DefaultRequestHeaders.Add("referer", "https://iboard.ssi.com.vn/");
-                client.DefaultRequestHeaders.Add("x-fiin-user-token", "YOUR_TOKEN_HERE"); // Replace with your token
-                                                                                          // Gọi 2 API song song
-                string incomeStatementUrl = $"https://fiin-fundamental.ssi.com.vn/FinancialStatement/GetIncomeStatement?language=vi&OrganCode={symbol}&Skip=0&Frequency=quarterly&numberOfPeriod=12&latestYear=2025";
-                string balanceSheetUrl = $"https://fiin-fundamental.ssi.com.vn/FinancialStatement/GetBalanceSheet?language=vi&OrganCode={symbol}&Skip=0&Frequency=quarterly&numberOfPeriod=12&latestYear=2025";
+                var orgInfoTask = _databaseService.GetOrganizationTable();
+                var incomeStatementTask = _databaseService.GetIncomeStatementsBySymbol(symbol);
+                var balanceSheetTask = _databaseService.GetBalanceSheetBySymbol(symbol);
 
-                try
+                // Chờ cả hai hoàn tất
+                await Task.WhenAll(incomeStatementTask, balanceSheetTask);
+
+                var incomeStatementResponse = incomeStatementTask.Result;
+                var balanceSheetResponse = balanceSheetTask.Result;
+                string orgInfoJson = "";
+                string incomeStatementJson = "";
+                string balanceSheetJson = "";
+
+                // Lấy kết quả
+                if(orgInfoTask.Rows.Count > 0 && orgInfoTask.Rows[0]["ResponseJson"] != DBNull.Value) 
                 {
-                    var incomeStatementApi = client.GetStringAsync(incomeStatementUrl);
-                    var balanceSheetApi = client.GetStringAsync(balanceSheetUrl);
-
-                    // Chờ cả hai hoàn tất
-                    await Task.WhenAll(incomeStatementApi, balanceSheetApi);
-
-                    // Lấy kết quả
-                    string incomeStatementResponse = await incomeStatementApi;
-                    string balanceSheetResponse = await balanceSheetApi;
-
-                    // Parse JSON
-                    var incomeStatementObj = JsonConvert.DeserializeObject<Models.IncomeStatementModel>(incomeStatementResponse);
-                    var balanceSheetObj = JsonConvert.DeserializeObject<Models.BalanceSheetModel>(balanceSheetResponse);
-
-                    var quarters = new List<string>();
-
-                    var quarterDataSize = 0;
-                    quarterDataSize = incomeStatementObj.items[0].quarterly.Count;
-                    if (quarterDataSize > 12)
-                        quarterDataSize = 12;
-                    if (quarterDataSize <= 0)
-                        return;
-
-
-                    for (int i = 0; i < quarterDataSize; i++)
+                    orgInfoJson = orgInfoTask.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
+                    var parsedList = ParseList(orgInfoJson);
+                    if (parsedList != null)
                     {
-                        quarters.Add("Q" + incomeStatementObj.items[0].quarterly[i].quarterReport + " " + incomeStatementObj.items[0].quarterly[i].yearReport);
+                        CompanyName = parsedList.Find(o => o.Symbol == symbol)?.Name ?? string.Empty;
+                    }
+                    else
+                    {
+                        CompanyName = string.Empty;
                     }
 
-                    // Tạo cột đầu tiên
-                    var rowHeaderCellStyle = new Style(typeof(TextBlock));
-                    rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.FontWeightProperty, FontWeights.Bold));
-                    rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.ForegroundProperty, Brushes.Black));
-                    rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.FontSizeProperty, 18.0));
-                    rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 10, 0)));
+                    ComStockCode = symbol;
+                }
+                
+                if (incomeStatementResponse.Rows.Count > 0 && incomeStatementResponse.Rows[0]["ResponseJson"] != DBNull.Value)
+                {
+                    incomeStatementJson = incomeStatementResponse.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
+                    balanceSheetJson = balanceSheetResponse.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
+                }
 
-                    IndustryColumns.Add(new DataGridTextColumn
-                    {
-                        Header = "Tiêu chí CSDL",
-                        Binding = new Binding("IndicatorName"),
-                        ElementStyle = rowHeaderCellStyle,
-                        Width = DataGridLength.Auto
-                    });
+                // Parse JSON
+                var incomeStatementObj = JsonConvert.DeserializeObject<Models.IncomeStatementModel>(incomeStatementJson);
+                var balanceSheetObj = JsonConvert.DeserializeObject<Models.BalanceSheetModel>(balanceSheetJson);
 
-                    var ManuFacIndicator = new[] {
+                var quarters = new List<string>();
+
+                var quarterDataSize = 0;
+                quarterDataSize = incomeStatementObj.items[0].quarterly.Count;
+                if (quarterDataSize > 12)
+                    quarterDataSize = 12;
+                if (quarterDataSize <= 0)
+                    return;
+
+
+                for (int i = 0; i < quarterDataSize; i++)
+                {
+                    quarters.Add("Q" + incomeStatementObj.items[0].quarterly[i].quarterReport + " " + incomeStatementObj.items[0].quarterly[i].yearReport);
+                }
+
+                // Tạo cột đầu tiên
+                var rowHeaderCellStyle = new Style(typeof(TextBlock));
+                rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.FontWeightProperty, FontWeights.Bold));
+                rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.ForegroundProperty, Brushes.Black));
+                rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.FontSizeProperty, 18.0));
+                rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 10, 0)));
+
+                IndustryColumns.Add(new DataGridTextColumn
+                {
+                    Header = "Tiêu chí CSDL",
+                    Binding = new Binding("IndicatorName"),
+                    ElementStyle = rowHeaderCellStyle,
+                    Width = DataGridLength.Auto
+                });
+
+                var ManuFacIndicator = new[] {
                                         "Doanh số thuần",
                                         "Lãi gộp",
                                         "Lãi/(lỗ) thuần sau thuế",
@@ -147,59 +145,65 @@ namespace StockFilterToolsV1.ViewModels
                                         "Các khoản phải thu",
                                         "Tài sản dở dang dài hạn"
                                     };
-                    Rows.Clear();
-                    
-                    for (int i = 0; i < ManuFacIndicator.Length; i++)
+                Rows.Clear();
+
+                for (int i = 0; i < ManuFacIndicator.Length; i++)
+                {
+                    var dataRow = new DataRow
                     {
-                        var dataRow = new DataRow
-                        {
-                            IndicatorName = ManuFacIndicator[i],
-                            QuarterlyValues = new List<string>()
-                        };
+                        IndicatorName = ManuFacIndicator[i],
+                        QuarterlyValues = new List<string>()
+                    };
 
-                        // Tạo dòng dữ liệu
-                        for (int j = 0; j < quarterDataSize; j++)
-                        {
-                            var quarterIncomeStatementData = incomeStatementObj.items[0].quarterly[j];
-                            var quarterBalanceSheetData = balanceSheetObj.items[0].quarterly[j];
+                    // Tạo dòng dữ liệu
+                    for (int j = 0; j < quarterDataSize; j++)
+                    {
+                        var quarterIncomeStatementData = incomeStatementObj.items[0].quarterly[j];
+                        var quarterBalanceSheetData = balanceSheetObj.items[0].quarterly[j];
 
-                            switch (i)
-                            {
-                                case 0:
-                                    dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa3.ToString("#,##0"));
-                                    break;
-                                case 1:
-                                    dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa5.ToString("#,##0"));
-                                    break;
-                                case 2:
-                                    dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa20.ToString("#,##0"));
-                                    break;
-                                case 3:
-                                    dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa23.ToString("#,##0"));
-                                    break;
-                                case 4:
-                                    dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa15.ToString("#,##0"));
-                                    break;
-                                case 5:
-                                    dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa8.ToString("#,##0"));
-                                    break;
-                                case 6:
-                                    dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa163.ToString("#,##0"));
-                                    break;
-                            }
+                        switch (i)
+                        {
+                            case 0:
+                                dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa3.ToString("#,##0"));
+                                break;
+                            case 1:
+                                dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa5.ToString("#,##0"));
+                                break;
+                            case 2:
+                                dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa20.ToString("#,##0"));
+                                break;
+                            case 3:
+                                dataRow.QuarterlyValues.Add(quarterIncomeStatementData.isa23.ToString("#,##0"));
+                                break;
+                            case 4:
+                                dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa15.ToString("#,##0"));
+                                break;
+                            case 5:
+                                dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa8.ToString("#,##0"));
+                                break;
+                            case 6:
+                                dataRow.QuarterlyValues.Add(quarterBalanceSheetData.bsa163.ToString("#,##0"));
+                                break;
                         }
-
-                        Rows.Add(dataRow);
                     }
 
-                    Rows.Add(new DataRow
-                    {
-                        IndicatorName = "",
-                        QuarterlyValues = new List<string>() 
-                    });
+                    Rows.Add(dataRow);
+                }
 
-                    var ManuFactEvaluateCriteria = new[]
-                    {
+                var emptyRow = new DataRow
+                {
+                    IndicatorName = "",
+                    QuarterlyValues = new List<string>()
+                };
+                for (int i = 0; i < 12; i++)
+                {
+                    emptyRow.QuarterlyValues.Add("");
+                }
+
+                Rows.Add(emptyRow);
+
+                var ManuFactEvaluateCriteria = new[]
+                {
                             "Tốc độ tăng trưởng Doanh số thuần",
                             "Tốc độ tăng trưởng Lãi( lỗ) thuần sau  thuế",
                             "Tốc độ tăng trưởng EPS",
@@ -209,71 +213,111 @@ namespace StockFilterToolsV1.ViewModels
                             "Biên lãi gộp"
                         };
 
-                    for (int i = 0; i < ManuFactEvaluateCriteria.Length; i++)
-                    {
-                        var dataRow = new DataRow
-                        {
-                            IndicatorName = ManuFactEvaluateCriteria[i],
-                            QuarterlyValues = new List<string>()
-                        };
-
-                        for (int j = 0; j < quarterDataSize; j++)
-                        {
-                            var quarterIncomeStatementData = incomeStatementObj.items[0].quarterly[j];
-                            var quarterBalanceSheetData = balanceSheetObj.items[0].quarterly[j];
-                            switch (i)
-                            {
-                                case 0:
-                                    dataRow.QuarterlyValues.Add(GetNetRevenueGrowthRate(incomeStatementObj, j));
-                                    break;
-                                case 1:
-                                    dataRow.QuarterlyValues.Add(GetNetProfitGrowthRate(incomeStatementObj, j));
-                                    break;
-                                case 2:
-                                    dataRow.QuarterlyValues.Add(GetEpsGrowthRate(incomeStatementObj, j));
-                                    break;
-                                case 3:
-                                    dataRow.QuarterlyValues.Add(GetInventoryGrowthRate(balanceSheetObj, j));
-                                    break;
-                                case 4:
-                                    dataRow.QuarterlyValues.Add(GetAccReceivableGrowthRate(balanceSheetObj, j));
-                                    break;
-                                case 5:
-                                    dataRow.QuarterlyValues.Add(GetNetProfitMargin(incomeStatementObj, j));
-                                    break;
-                                case 6:
-                                    dataRow.QuarterlyValues.Add(GetGrossProfitMargin(incomeStatementObj, j));
-                                    break;
-                            }
-                        }
-                        Rows.Add(dataRow);
-                    }
-
-                    //Format cell
-                    var dataCellStyle = new Style(typeof(TextBlock));
-                    dataCellStyle.Setters.Add(new Setter(TextBlock.FontWeightProperty, FontWeights.Bold));
-                    dataCellStyle.Setters.Add(new Setter(TextBlock.ForegroundProperty, Brushes.Black));
-                    dataCellStyle.Setters.Add(new Setter(TextBlock.FontSizeProperty, 16.0));
-                    dataCellStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 10, 0)));
-
-                    for (int i = 0; i < quarterDataSize; i++)
-                    {
-                        IndustryColumns.Add(new DataGridTextColumn
-                        {
-                            Header = quarters[i],
-                            Binding = new Binding($"QuarterlyValues[{i}]"),
-                            Width = DataGridLength.Auto,
-                            ElementStyle = dataCellStyle,
-                        });
-                    }
-
-                    IsGridVisible = IndustryColumns.Any();
-                }
-                catch (Exception ex)
+                for (int i = 0; i < ManuFactEvaluateCriteria.Length; i++)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    var dataRow = new DataRow
+                    {
+                        IndicatorName = ManuFactEvaluateCriteria[i],
+                        QuarterlyValues = new List<string>()
+                    };
+
+                    for (int j = 0; j < quarterDataSize; j++)
+                    {
+                        var quarterIncomeStatementData = incomeStatementObj.items[0].quarterly[j];
+                        var quarterBalanceSheetData = balanceSheetObj.items[0].quarterly[j];
+                        switch (i)
+                        {
+                            case 0:
+                                dataRow.QuarterlyValues.Add(GetNetRevenueGrowthRate(incomeStatementObj, j));
+                                break;
+                            case 1:
+                                dataRow.QuarterlyValues.Add(GetNetProfitGrowthRate(incomeStatementObj, j));
+                                break;
+                            case 2:
+                                dataRow.QuarterlyValues.Add(GetEpsGrowthRate(incomeStatementObj, j));
+                                break;
+                            case 3:
+                                dataRow.QuarterlyValues.Add(GetInventoryGrowthRate(balanceSheetObj, j));
+                                break;
+                            case 4:
+                                dataRow.QuarterlyValues.Add(GetAccReceivableGrowthRate(balanceSheetObj, j));
+                                break;
+                            case 5:
+                                dataRow.QuarterlyValues.Add(GetNetProfitMargin(incomeStatementObj, j));
+                                break;
+                            case 6:
+                                dataRow.QuarterlyValues.Add(GetGrossProfitMargin(incomeStatementObj, j));
+                                break;
+                        }
+                    }
+                    Rows.Add(dataRow);
+                }
+
+                //Format cell
+                var dataCellStyle = new Style(typeof(TextBlock));
+                dataCellStyle.Setters.Add(new Setter(TextBlock.FontWeightProperty, FontWeights.Bold));
+                dataCellStyle.Setters.Add(new Setter(TextBlock.ForegroundProperty, Brushes.Black));
+                dataCellStyle.Setters.Add(new Setter(TextBlock.FontSizeProperty, 16.0));
+                dataCellStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 10, 0)));
+
+                for (int i = 0; i < quarterDataSize; i++)
+                {
+                    IndustryColumns.Add(new DataGridTextColumn
+                    {
+                        Header = quarters[i],
+                        Binding = new Binding($"QuarterlyValues[{i}]"),
+                        Width = DataGridLength.Auto,
+                        ElementStyle = dataCellStyle,
+                    });
+                }
+
+                IsGridVisible = IndustryColumns.Any();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            
+        }
+
+        private List<Organization> ParseList(string json)
+        {
+            var result = new List<Organization>();
+            var listOrgResponse = JObject.Parse(json);
+            var listOrg = listOrgResponse["items"];
+            if (listOrg != null)
+            {
+                foreach (var org in listOrg)
+                {
+                    var temOrg = new Organization();
+                    var orgTicker = org["ticker"];
+                    var orgCode = org["organCode"];
+                    var orgName = org["organName"];
+                    var comTypeCode = org["comTypeCode"];
+                    if (orgTicker != null)
+                    {
+                        temOrg.Symbol = orgTicker.ToString();
+                    }
+
+                    if (orgCode != null)
+                    {
+                        temOrg.OrganCode = orgCode.ToString();
+                    }
+
+                    if (orgName != null)
+                    {
+                        temOrg.Name = orgName.ToString();
+                    }
+
+                    if (comTypeCode != null)
+                    {
+                        temOrg.ComTypeCode = comTypeCode.ToString();
+                    }
+
+                    result.Add(temOrg);
                 }
             }
+            return result;
         }
 
         private string GetNetRevenueGrowthRate(Models.IncomeStatementModel incomeStatementObj, int j)

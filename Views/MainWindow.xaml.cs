@@ -16,7 +16,6 @@ namespace StockFilterToolsV1
             InitializeComponent();
             var vm = new MainViewModel();
             this.DataContext = vm;
-
             vm.IndustryColumns.CollectionChanged += IndustryColumns_CollectionChanged;
         }
 

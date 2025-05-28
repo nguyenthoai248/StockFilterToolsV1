@@ -50,3 +50,4 @@ E:\ProgramingWorkspace\StockTools\Thang\StockFilterToolsV1\obj\Debug\net8.0-wind
 E:\ProgramingWorkspace\StockTools\Thang\StockFilterToolsV1\obj\Debug\net8.0-windows\StockFilterToolsV1.sourcelink.json
 E:\ProgramingWorkspace\StockTools\Thang\StockFilterToolsV1\obj\Debug\net8.0-windows\StockFil.ED05F897.Up2Date
 E:\ProgramingWorkspace\StockTools\Thang\StockFilterToolsV1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\ProgramingWorkspace\StockTools\Thang\StockFilterToolsV1\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll

@@ -1,10 +1,6 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using StockFilterToolsV1.Models;
 using System.Diagnostics;
-using System.Net.WebSockets;
-using System.Threading;
-using System.Windows;
 
 namespace StockFilterToolsV1.Services
 {
@@ -35,8 +31,6 @@ namespace StockFilterToolsV1.Services
             }
 
             List<Task> tasks = new();
-            //var vvsData = _dbService.GetBalanceSheetBySymbol("VVS");
-            //Debug.WriteLine("ThoaiNV" + vvsData.Rows[0][1].ToString());
             foreach (var org in listOrgSymbol)
             {
                 if (_dbService.IsSymbolRecentlyUpdated(org.Symbol))
@@ -48,7 +42,7 @@ namespace StockFilterToolsV1.Services
                 tasks.Add(ProcessOrganizationAsync(org));
 
                 // Thêm delay nhỏ tránh burst mạnh gây block IP
-                await Task.Delay(_random.Next(800, 2000));
+                await Task.Delay(_random.Next(1000, 5000));
             }
 
             await Task.WhenAll(tasks);

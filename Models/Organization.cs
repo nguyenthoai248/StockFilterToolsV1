@@ -5,5 +5,6 @@
         public string Symbol { get; set; }
         public string OrganCode { get; set; }
         public string Name { get; set; }
+        public string ComTypeCode { get; set; }
     }
 }

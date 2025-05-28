@@ -1,6 +1,4 @@
 ﻿using System.Net.Http;
-using System.Threading.Tasks;
-using StockFilterToolsV1.Utils;
 
 namespace StockFilterToolsV1.Services
 {
