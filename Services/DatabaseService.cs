@@ -36,64 +36,72 @@ namespace StockFilterToolsV1.Services
             return $"Data Source={dbPath}";
         }
 
-        public void SaveJson(string table, string symbol, string json)
+        public async Task SaveJson(string table, string symbol, string json)
         {
-            var conn = new SqliteConnection(connectionString);
-            conn.Open();
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = $@"
-                INSERT INTO {table} (Symbol, ResponseJson, FetchedAt)
+            await using var conn = new SqliteConnection(connectionString);
+            await conn.OpenAsync();
+
+            await using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"
+                INSERT INTO " + table + @" (Symbol, ResponseJson, FetchedAt)
                 VALUES (@symbol, @json, @time)
                 ON CONFLICT(Symbol) DO UPDATE SET 
                 ResponseJson = excluded.ResponseJson,
                 FetchedAt = excluded.FetchedAt;";
             cmd.Parameters.AddWithValue("@symbol", symbol);
             cmd.Parameters.AddWithValue("@json", json);
-            cmd.Parameters.AddWithValue("@time", DateTime.UtcNow.ToString("o")); // ISO 8601
-            cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@time", DateTime.UtcNow.ToString("o"));
+
+            await cmd.ExecuteNonQueryAsync();
         }
 
-        public DataTable GetOrganizationTable()
+        public async Task<DataTable> GetOrganizationTable()
         {
-            var dt = new DataTable();
-            var conn = new SqliteConnection(connectionString);
-            conn.Open();
-            var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Symbol, ResponseJson FROM Organizations ORDER BY Symbol";
-            var reader = cmd.ExecuteReader();
-            dt.Load(reader);
-            return dt;
+            return await Task.Run(() =>
+            {
+                var dt = new DataTable();
+                using var conn = new SqliteConnection(connectionString);
+                conn.Open();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT Symbol, ResponseJson FROM Organizations ORDER BY Symbol";
+                using var reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                return dt;
+            });
         }
 
         public async Task<DataTable> GetBalanceSheetBySymbol(string symbol)
         {
-            var dt = new DataTable();
-            await using var conn = new SqliteConnection(connectionString);
-            await conn.OpenAsync();
-            await using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Symbol, ResponseJson FROM BalanceSheets WHERE Symbol = $symbol ORDER BY Symbol";
-            cmd.Parameters.AddWithValue("$symbol", symbol);
+            return await Task.Run(() =>
+            {
+                var dt = new DataTable();
+                using var conn = new SqliteConnection(connectionString);
+                conn.OpenAsync();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT Symbol, ResponseJson FROM BalanceSheets WHERE Symbol = $symbol ORDER BY Symbol";
+                cmd.Parameters.AddWithValue("$symbol", symbol);
 
-            await using var reader = await cmd.ExecuteReaderAsync();
-            dt.Load(reader);
+                using var reader = cmd.ExecuteReader();
+                dt.Load(reader);
 
-            return dt;
+                return dt;
+            });
         }
 
         public async Task<DataTable> GetIncomeStatementsBySymbol(string symbol)
         {
-            var dt = new DataTable();
-            await using var conn = new SqliteConnection(connectionString);
-            await conn.OpenAsync();
-
-            await using var cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT Symbol, ResponseJson FROM IncomeStatements WHERE Symbol = $symbol ORDER BY Symbol";
-            cmd.Parameters.AddWithValue("$symbol", symbol);
-
-            await using var reader = await cmd.ExecuteReaderAsync();
-            dt.Load(reader);
-
-            return dt;
+            return await Task.Run(() =>
+            {
+                var dt = new DataTable();
+                using var conn = new SqliteConnection(connectionString);
+                conn.OpenAsync();
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT Symbol, ResponseJson FROM IncomeStatements WHERE Symbol = $symbol ORDER BY Symbol";
+                cmd.Parameters.AddWithValue("$symbol", symbol);
+                using var reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                return dt;
+            });
         }
 
         public bool IsSymbolRecentlyUpdated(string symbol)

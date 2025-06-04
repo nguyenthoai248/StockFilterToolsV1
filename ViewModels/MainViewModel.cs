@@ -4,8 +4,7 @@ using Newtonsoft.Json.Linq;
 using StockFilterToolsV1.Models;
 using StockFilterToolsV1.Services;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +17,7 @@ namespace StockFilterToolsV1.ViewModels
     {
         private readonly SyncService _syncService;
         private readonly DatabaseService _databaseService;
-        [ObservableProperty] private ObservableCollection<DataGridColumn> columns = new();
+        [ObservableProperty] private ObservableCollection<DataGridColumn> industryColumns = new();
         [ObservableProperty] private ObservableCollection<DataRow> rows = new();
         [ObservableProperty] private string companyName = string.Empty;
         [ObservableProperty] private string comStockCode = string.Empty;
@@ -26,23 +25,16 @@ namespace StockFilterToolsV1.ViewModels
         [ObservableProperty] private bool isGridVisible;
         [ObservableProperty] private bool isLoading;
 
-        // ViewModels/MainViewModel.cs
-        public ObservableCollection<DataGridColumn> IndustryColumns { get; set; }
-
         public ICommand FetchCommand { get; }
         public ICommand SyncDataCommand { get; }
 
         public MainViewModel()
         {
-            // Initialize non-nullable fields
-            _columns = new ObservableCollection<DataGridColumn>();
-            _rows = new ObservableCollection<DataRow>();
-            IndustryColumns = new ObservableCollection<DataGridColumn>();
-
             FetchCommand = new AsyncRelayCommand<string>(async param =>
             {
                 IsLoading = true;
-                await Task.Yield();
+                IsGridVisible = false;
+                IndustryColumns.Clear();
                 string symbol = param;
                 if (!string.IsNullOrWhiteSpace(symbol))
                     await LoadDataAsync(symbol);
@@ -57,13 +49,8 @@ namespace StockFilterToolsV1.ViewModels
         {
             await _syncService.SyncAllData();
         }
-
-        public ObservableCollection<ManufacturingBusinessModel> manufacturingBusinessModels { get; set; } = new ObservableCollection<ManufacturingBusinessModel>();
-
         private async Task LoadDataAsync(string symbol)
         {
-            IsGridVisible = false;
-            IndustryColumns.Clear();
             try
             {
                 var orgInfoTask = _databaseService.GetOrganizationTable();
@@ -71,18 +58,21 @@ namespace StockFilterToolsV1.ViewModels
                 var balanceSheetTask = _databaseService.GetBalanceSheetBySymbol(symbol);
 
                 // Chờ cả hai hoàn tất
-                await Task.WhenAll(incomeStatementTask, balanceSheetTask);
+                await Task.WhenAll(orgInfoTask, incomeStatementTask, balanceSheetTask);
 
-                var incomeStatementResponse = incomeStatementTask.Result;
-                var balanceSheetResponse = balanceSheetTask.Result;
+                // Truy xuất kết quả
+                var orgInfo = await orgInfoTask;
+                var incomeStatementResponse = await incomeStatementTask;
+                var balanceSheetResponse = await balanceSheetTask;
+
                 string orgInfoJson = "";
                 string incomeStatementJson = "";
                 string balanceSheetJson = "";
 
                 // Lấy kết quả
-                if(orgInfoTask.Rows.Count > 0 && orgInfoTask.Rows[0]["ResponseJson"] != DBNull.Value) 
+                if (orgInfo.Rows.Count > 0 && orgInfo.Rows[0]["ResponseJson"] != DBNull.Value)
                 {
-                    orgInfoJson = orgInfoTask.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
+                    orgInfoJson = orgInfo.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
                     var parsedList = ParseList(orgInfoJson);
                     if (parsedList != null)
                     {
@@ -95,7 +85,7 @@ namespace StockFilterToolsV1.ViewModels
 
                     ComStockCode = symbol;
                 }
-                
+
                 if (incomeStatementResponse.Rows.Count > 0 && incomeStatementResponse.Rows[0]["ResponseJson"] != DBNull.Value)
                 {
                     incomeStatementJson = incomeStatementResponse.Rows[0]["ResponseJson"]?.ToString() ?? string.Empty;
@@ -277,7 +267,10 @@ namespace StockFilterToolsV1.ViewModels
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private List<Organization> ParseList(string json)
@@ -380,9 +373,5 @@ namespace StockFilterToolsV1.ViewModels
             var formattedResult = (result * 100).ToString("F2") + "%";
             return formattedResult;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string name = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

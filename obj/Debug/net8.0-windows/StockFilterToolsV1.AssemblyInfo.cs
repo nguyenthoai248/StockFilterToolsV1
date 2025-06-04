@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockFilterToolsV1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7f5714c86e4ecf90a9d4bc8bcfbaa6defcf2989")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+846d9d3d6c998e33b642a00b863b273956472c84")]
 [assembly: System.Reflection.AssemblyProductAttribute("StockFilterToolsV1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StockFilterToolsV1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
