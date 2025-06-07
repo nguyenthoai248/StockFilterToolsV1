@@ -31,16 +31,16 @@ namespace StockFilterToolsV1.Models
             public double? otherAssetBank { get; set; }
             public double? bsb113 { get; set; }
             public double? otherLiabilties { get; set; }
-            public double bsa78 { get; set; }
-            public double bsa95 { get; set; }
-            public double bsa1 { get; set; }
-            public double bsa30 { get; set; }
-            public double bsa36 { get; set; }
-            public double otherAssetNonBank { get; set; }
-            public double bsa55 { get; set; }
-            public double bsa67 { get; set; }
-            public double bsa53 { get; set; }
-            public double bsa2 { get; set; }
+            public double? bsa78 { get; set; }
+            public double? bsa95 { get; set; }
+            public double? bsa1 { get; set; }
+            public double? bsa30 { get; set; }
+            public double? bsa36 { get; set; }
+            public double? otherAssetNonBank { get; set; }
+            public double? bsa55 { get; set; }
+            public double? bsa67 { get; set; }
+            public double? bsa53 { get; set; }
+            public double? bsa2 { get; set; }
             public double? bsb97 { get; set; }
             public double? bsb100 { get; set; }
             public double? bsb101 { get; set; }
@@ -48,19 +48,19 @@ namespace StockFilterToolsV1.Models
             public double? bsb104 { get; set; }
             public double? bsb105 { get; set; }
             public double? bsb107 { get; set; }
-            public double bsb108 { get; set; }
+            public double? bsb108 { get; set; }
             public double? bsb109 { get; set; }
-            public double bsa43 { get; set; }
-            public double bsa44 { get; set; }
-            public double bsa45 { get; set; }
-            public double bsa46 { get; set; }
-            public double bsa47 { get; set; }
-            public double bsa29 { get; set; }
-            public double bsa33 { get; set; }
-            public double bsa40 { get; set; }
+            public double? bsa43 { get; set; }
+            public double? bsa44 { get; set; }
+            public double? bsa45 { get; set; }
+            public double? bsa46 { get; set; }
+            public double? bsa47 { get; set; }
+            public double? bsa29 { get; set; }
+            public double? bsa33 { get; set; }
+            public double? bsa40 { get; set; }
             public double? bsb110 { get; set; }
-            public double bsa96 { get; set; }
-            public double bsa54 { get; set; }
+            public double? bsa96 { get; set; }
+            public double? bsa54 { get; set; }
             public double? bsb111 { get; set; }
             public double? bsb112 { get; set; }
             public double? bsb114 { get; set; }
@@ -68,108 +68,108 @@ namespace StockFilterToolsV1.Models
             public double? bsb116 { get; set; }
             public double? bsb117 { get; set; }
             public double? bsb118 { get; set; }
-            public double bsa80 { get; set; }
+            public double? bsa80 { get; set; }
             public double? bsb119 { get; set; }
-            public double bsa81 { get; set; }
-            public double bsa83 { get; set; }
-            public double bsb120 { get; set; }
-            public double bsa82 { get; set; }
+            public double? bsa81 { get; set; }
+            public double? bsa83 { get; set; }
+            public double? bsb120 { get; set; }
+            public double? bsa82 { get; set; }
             public double? bsb121 { get; set; }
             public object bsb174 { get; set; }
-            public double bsa85 { get; set; }
-            public double bsa84 { get; set; }
-            public double bsa90 { get; set; }
-            public double bsa3 { get; set; }
-            public double bsa4 { get; set; }
-            public double bsa5 { get; set; }
-            public double bsa6 { get; set; }
-            public double bsa7 { get; set; }
-            public double bsa8 { get; set; }
-            public double bsa9 { get; set; }
-            public double bsa10 { get; set; }
-            public double bsa11 { get; set; }
-            public double bsa12 { get; set; }
-            public double bsa159 { get; set; }
-            public double bsa13 { get; set; }
-            public double bsa14 { get; set; }
-            public double bsI141 { get; set; }
-            public double bsa15 { get; set; }
-            public double bsa16 { get; set; }
-            public double bsa17 { get; set; }
-            public double bsa18 { get; set; }
-            public double bsa19 { get; set; }
-            public double bsa20 { get; set; }
-            public double bsa21 { get; set; }
-            public double bsa22 { get; set; }
-            public double bsa160 { get; set; }
-            public double bsa165 { get; set; }
-            public double bsa169 { get; set; }
-            public double bsa23 { get; set; }
-            public double bsa24 { get; set; }
-            public double bsa25 { get; set; }
-            public double bsa161 { get; set; }
-            public double bsS134 { get; set; }
-            public double bsa26 { get; set; }
-            public double bsa162 { get; set; }
-            public double bsa27 { get; set; }
-            public double bsa28 { get; set; }
-            public double bsa31 { get; set; }
-            public double bsa32 { get; set; }
-            public double bsa34 { get; set; }
-            public double bsa35 { get; set; }
-            public double bsa37 { get; set; }
-            public double bsa38 { get; set; }
-            public double bsa41 { get; set; }
-            public double bsa42 { get; set; }
-            public double bsa163 { get; set; }
-            public double bsa164 { get; set; }
-            public double bsa39 { get; set; }
-            public double bsa49 { get; set; }
-            public double bsa50 { get; set; }
-            public double bsa51 { get; set; }
-            public double bsa166 { get; set; }
-            public double bsa52 { get; set; }
-            public double bsa48 { get; set; }
-            public double bsa57 { get; set; }
-            public double bsa58 { get; set; }
-            public double bsa59 { get; set; }
-            public double bsa60 { get; set; }
-            public double bsa61 { get; set; }
-            public double bsa62 { get; set; }
-            public double bsa63 { get; set; }
-            public double bsa167 { get; set; }
-            public double bsa64 { get; set; }
-            public double bsa56 { get; set; }
-            public double bsa65 { get; set; }
-            public double bsa66 { get; set; }
-            public double bsa168 { get; set; }
-            public double bsa68 { get; set; }
-            public double bsa170 { get; set; }
-            public double bsa171 { get; set; }
-            public double bsa172 { get; set; }
-            public double bsa69 { get; set; }
-            public double bsa76 { get; set; }
-            public double bsa70 { get; set; }
-            public double bsa71 { get; set; }
-            public double bsa173 { get; set; }
-            public double bsa72 { get; set; }
-            public double bsa73 { get; set; }
-            public double bsa74 { get; set; }
-            public double bsa77 { get; set; }
-            public double bsa79 { get; set; }
-            public double bsa175 { get; set; }
-            public double bsa176 { get; set; }
-            public double bsa86 { get; set; }
-            public double bsa91 { get; set; }
-            public double bsa87 { get; set; }
-            public double bsa89 { get; set; }
-            public double bsa177 { get; set; }
-            public double bsa178 { get; set; }
-            public double bsa210 { get; set; }
-            public double bsa92 { get; set; }
-            public double bsa93 { get; set; }
-            public double bsa94 { get; set; }
-            public double bsa211 { get; set; }
+            public double? bsa85 { get; set; }
+            public double? bsa84 { get; set; }
+            public double? bsa90 { get; set; }
+            public double? bsa3 { get; set; }
+            public double? bsa4 { get; set; }
+            public double? bsa5 { get; set; }
+            public double? bsa6 { get; set; }
+            public double? bsa7 { get; set; }
+            public double? bsa8 { get; set; }
+            public double? bsa9 { get; set; }
+            public double? bsa10 { get; set; }
+            public double? bsa11 { get; set; }
+            public double? bsa12 { get; set; }
+            public double? bsa159 { get; set; }
+            public double? bsa13 { get; set; }
+            public double? bsa14 { get; set; }
+            public double? bsI141 { get; set; }
+            public double? bsa15 { get; set; }
+            public double? bsa16 { get; set; }
+            public double? bsa17 { get; set; }
+            public double? bsa18 { get; set; }
+            public double? bsa19 { get; set; }
+            public double? bsa20 { get; set; }
+            public double? bsa21 { get; set; }
+            public double? bsa22 { get; set; }
+            public double? bsa160 { get; set; }
+            public double? bsa165 { get; set; }
+            public double? bsa169 { get; set; }
+            public double? bsa23 { get; set; }
+            public double? bsa24 { get; set; }
+            public double? bsa25 { get; set; }
+            public double? bsa161 { get; set; }
+            public double? bsS134 { get; set; }
+            public double? bsa26 { get; set; }
+            public double? bsa162 { get; set; }
+            public double? bsa27 { get; set; }
+            public double? bsa28 { get; set; }
+            public double? bsa31 { get; set; }
+            public double? bsa32 { get; set; }
+            public double? bsa34 { get; set; }
+            public double? bsa35 { get; set; }
+            public double? bsa37 { get; set; }
+            public double? bsa38 { get; set; }
+            public double? bsa41 { get; set; }
+            public double? bsa42 { get; set; }
+            public double? bsa163 { get; set; }
+            public double? bsa164 { get; set; }
+            public double? bsa39 { get; set; }
+            public double? bsa49 { get; set; }
+            public double? bsa50 { get; set; }
+            public double? bsa51 { get; set; }
+            public double? bsa166 { get; set; }
+            public double? bsa52 { get; set; }
+            public double? bsa48 { get; set; }
+            public double? bsa57 { get; set; }
+            public double? bsa58 { get; set; }
+            public double? bsa59 { get; set; }
+            public double? bsa60 { get; set; }
+            public double? bsa61 { get; set; }
+            public double? bsa62 { get; set; }
+            public double? bsa63 { get; set; }
+            public double? bsa167 { get; set; }
+            public double? bsa64 { get; set; }
+            public double? bsa56 { get; set; }
+            public double? bsa65 { get; set; }
+            public double? bsa66 { get; set; }
+            public double? bsa168 { get; set; }
+            public double? bsa68 { get; set; }
+            public double? bsa170 { get; set; }
+            public double? bsa171 { get; set; }
+            public double? bsa172 { get; set; }
+            public double? bsa69 { get; set; }
+            public double? bsa76 { get; set; }
+            public double? bsa70 { get; set; }
+            public double? bsa71 { get; set; }
+            public double? bsa173 { get; set; }
+            public double? bsa72 { get; set; }
+            public double? bsa73 { get; set; }
+            public double? bsa74 { get; set; }
+            public double? bsa77 { get; set; }
+            public double? bsa79 { get; set; }
+            public double? bsa175 { get; set; }
+            public double? bsa176 { get; set; }
+            public double? bsa86 { get; set; }
+            public double? bsa91 { get; set; }
+            public double? bsa87 { get; set; }
+            public double? bsa89 { get; set; }
+            public double? bsa177 { get; set; }
+            public double? bsa178 { get; set; }
+            public double? bsa210 { get; set; }
+            public double? bsa92 { get; set; }
+            public double? bsa93 { get; set; }
+            public double? bsa94 { get; set; }
+            public double? bsa211 { get; set; }
             public double? bsi198 { get; set; }
             public double? bsi199 { get; set; }
             public double? bsi139 { get; set; }
@@ -185,9 +185,9 @@ namespace StockFilterToolsV1.Models
             public double? bsi145 { get; set; }
             public double? bsi195 { get; set; }
             public double? bsi196 { get; set; }
-            public double bsa188 { get; set; }
+            public double? bsa188 { get; set; }
             public double? bsi146 { get; set; }
-            public double bsa209 { get; set; }
+            public double? bsa209 { get; set; }
             public double? bsi200 { get; set; }
             public double? bsi201 { get; set; }
             public double? bsi197 { get; set; }
@@ -201,7 +201,7 @@ namespace StockFilterToolsV1.Models
             public double? bsi147 { get; set; }
             public double? bsi148 { get; set; }
             public double? bsi149 { get; set; }
-            public double bsa174 { get; set; }
+            public double? bsa174 { get; set; }
             public double? bsi150 { get; set; }
             public double? bsa75 { get; set; }
             public double? bsi151 { get; set; }
@@ -269,16 +269,16 @@ namespace StockFilterToolsV1.Models
             public double? otherAssetBank { get; set; }
             public double? bsb113 { get; set; }
             public double? otherLiabilties { get; set; }
-            public double bsa78 { get; set; }
-            public double bsa95 { get; set; }
-            public double bsa1 { get; set; }
-            public double bsa30 { get; set; }
-            public double bsa36 { get; set; }
-            public double otherAssetNonBank { get; set; }
-            public double bsa55 { get; set; }
-            public double bsa67 { get; set; }
-            public double bsa53 { get; set; }
-            public double bsa2 { get; set; }
+            public double? bsa78 { get; set; }
+            public double? bsa95 { get; set; }
+            public double? bsa1 { get; set; }
+            public double? bsa30 { get; set; }
+            public double? bsa36 { get; set; }
+            public double? otherAssetNonBank { get; set; }
+            public double? bsa55 { get; set; }
+            public double? bsa67 { get; set; }
+            public double? bsa53 { get; set; }
+            public double? bsa2 { get; set; }
             public double? bsb97 { get; set; }
             public double? bsb100 { get; set; }
             public double? bsb101 { get; set; }
@@ -286,19 +286,19 @@ namespace StockFilterToolsV1.Models
             public double? bsb104 { get; set; }
             public double? bsb105 { get; set; }
             public double? bsb107 { get; set; }
-            public double bsb108 { get; set; }
+            public double? bsb108 { get; set; }
             public double? bsb109 { get; set; }
-            public double bsa43 { get; set; }
-            public double bsa44 { get; set; }
-            public double bsa45 { get; set; }
-            public double bsa46 { get; set; }
-            public double bsa47 { get; set; }
-            public double bsa29 { get; set; }
-            public double bsa33 { get; set; }
-            public double bsa40 { get; set; }
+            public double? bsa43 { get; set; }
+            public double? bsa44 { get; set; }
+            public double? bsa45 { get; set; }
+            public double? bsa46 { get; set; }
+            public double? bsa47 { get; set; }
+            public double? bsa29 { get; set; }
+            public double? bsa33 { get; set; }
+            public double? bsa40 { get; set; }
             public double? bsb110 { get; set; }
-            public double bsa96 { get; set; }
-            public double bsa54 { get; set; }
+            public double? bsa96 { get; set; }
+            public double? bsa54 { get; set; }
             public double? bsb111 { get; set; }
             public double? bsb112 { get; set; }
             public double? bsb114 { get; set; }
@@ -306,108 +306,108 @@ namespace StockFilterToolsV1.Models
             public double? bsb116 { get; set; }
             public double? bsb117 { get; set; }
             public double? bsb118 { get; set; }
-            public double bsa80 { get; set; }
+            public double? bsa80 { get; set; }
             public double? bsb119 { get; set; }
-            public double bsa81 { get; set; }
-            public double bsa83 { get; set; }
-            public double bsb120 { get; set; }
-            public double bsa82 { get; set; }
+            public double? bsa81 { get; set; }
+            public double? bsa83 { get; set; }
+            public double? bsb120 { get; set; }
+            public double? bsa82 { get; set; }
             public double? bsb121 { get; set; }
             public object bsb174 { get; set; }
-            public double bsa85 { get; set; }
-            public double bsa84 { get; set; }
-            public double bsa90 { get; set; }
-            public double bsa3 { get; set; }
-            public double bsa4 { get; set; }
-            public double bsa5 { get; set; }
-            public double bsa6 { get; set; }
-            public double bsa7 { get; set; }
-            public double bsa8 { get; set; }
-            public double bsa9 { get; set; }
-            public double bsa10 { get; set; }
-            public double bsa11 { get; set; }
-            public double bsa12 { get; set; }
-            public double bsa159 { get; set; }
-            public double bsa13 { get; set; }
-            public double bsa14 { get; set; }
-            public double bsI141 { get; set; }
-            public double bsa15 { get; set; }
-            public double bsa16 { get; set; }
-            public double bsa17 { get; set; }
-            public double bsa18 { get; set; }
-            public double bsa19 { get; set; }
-            public double bsa20 { get; set; }
-            public double bsa21 { get; set; }
-            public double bsa22 { get; set; }
-            public double bsa160 { get; set; }
-            public double bsa165 { get; set; }
-            public double bsa169 { get; set; }
-            public double bsa23 { get; set; }
-            public double bsa24 { get; set; }
-            public double bsa25 { get; set; }
-            public double bsa161 { get; set; }
-            public double bsS134 { get; set; }
-            public double bsa26 { get; set; }
-            public double bsa162 { get; set; }
-            public double bsa27 { get; set; }
-            public double bsa28 { get; set; }
-            public double bsa31 { get; set; }
-            public double bsa32 { get; set; }
-            public double bsa34 { get; set; }
-            public double bsa35 { get; set; }
-            public double bsa37 { get; set; }
-            public double bsa38 { get; set; }
-            public double bsa41 { get; set; }
-            public double bsa42 { get; set; }
-            public double bsa163 { get; set; }
-            public double bsa164 { get; set; }
-            public double bsa39 { get; set; }
-            public double bsa49 { get; set; }
-            public double bsa50 { get; set; }
-            public double bsa51 { get; set; }
-            public double bsa166 { get; set; }
-            public double bsa52 { get; set; }
-            public double bsa48 { get; set; }
-            public double bsa57 { get; set; }
-            public double bsa58 { get; set; }
-            public double bsa59 { get; set; }
-            public double bsa60 { get; set; }
-            public double bsa61 { get; set; }
-            public double bsa62 { get; set; }
-            public double bsa63 { get; set; }
-            public double bsa167 { get; set; }
-            public double bsa64 { get; set; }
-            public double bsa56 { get; set; }
-            public double bsa65 { get; set; }
-            public double bsa66 { get; set; }
-            public double bsa168 { get; set; }
-            public double bsa68 { get; set; }
-            public double bsa170 { get; set; }
-            public double bsa171 { get; set; }
-            public double bsa172 { get; set; }
-            public double bsa69 { get; set; }
-            public double bsa76 { get; set; }
-            public double bsa70 { get; set; }
-            public double bsa71 { get; set; }
-            public double bsa173 { get; set; }
-            public double bsa72 { get; set; }
-            public double bsa73 { get; set; }
-            public double bsa74 { get; set; }
-            public double bsa77 { get; set; }
-            public double bsa79 { get; set; }
-            public double bsa175 { get; set; }
-            public double bsa176 { get; set; }
-            public double bsa86 { get; set; }
-            public double bsa91 { get; set; }
-            public double bsa87 { get; set; }
-            public double bsa89 { get; set; }
-            public double bsa177 { get; set; }
-            public double bsa178 { get; set; }
-            public double bsa210 { get; set; }
-            public double bsa92 { get; set; }
-            public double bsa93 { get; set; }
-            public double bsa94 { get; set; }
-            public double bsa211 { get; set; }
+            public double? bsa85 { get; set; }
+            public double? bsa84 { get; set; }
+            public double? bsa90 { get; set; }
+            public double? bsa3 { get; set; }
+            public double? bsa4 { get; set; }
+            public double? bsa5 { get; set; }
+            public double? bsa6 { get; set; }
+            public double? bsa7 { get; set; }
+            public double? bsa8 { get; set; }
+            public double? bsa9 { get; set; }
+            public double? bsa10 { get; set; }
+            public double? bsa11 { get; set; }
+            public double? bsa12 { get; set; }
+            public double? bsa159 { get; set; }
+            public double? bsa13 { get; set; }
+            public double? bsa14 { get; set; }
+            public double? bsI141 { get; set; }
+            public double? bsa15 { get; set; }
+            public double? bsa16 { get; set; }
+            public double? bsa17 { get; set; }
+            public double? bsa18 { get; set; }
+            public double? bsa19 { get; set; }
+            public double? bsa20 { get; set; }
+            public double? bsa21 { get; set; }
+            public double? bsa22 { get; set; }
+            public double? bsa160 { get; set; }
+            public double? bsa165 { get; set; }
+            public double? bsa169 { get; set; }
+            public double? bsa23 { get; set; }
+            public double? bsa24 { get; set; }
+            public double? bsa25 { get; set; }
+            public double? bsa161 { get; set; }
+            public double? bsS134 { get; set; }
+            public double? bsa26 { get; set; }
+            public double? bsa162 { get; set; }
+            public double? bsa27 { get; set; }
+            public double? bsa28 { get; set; }
+            public double? bsa31 { get; set; }
+            public double? bsa32 { get; set; }
+            public double? bsa34 { get; set; }
+            public double? bsa35 { get; set; }
+            public double? bsa37 { get; set; }
+            public double? bsa38 { get; set; }
+            public double? bsa41 { get; set; }
+            public double? bsa42 { get; set; }
+            public double? bsa163 { get; set; }
+            public double? bsa164 { get; set; }
+            public double? bsa39 { get; set; }
+            public double? bsa49 { get; set; }
+            public double? bsa50 { get; set; }
+            public double? bsa51 { get; set; }
+            public double? bsa166 { get; set; }
+            public double? bsa52 { get; set; }
+            public double? bsa48 { get; set; }
+            public double? bsa57 { get; set; }
+            public double? bsa58 { get; set; }
+            public double? bsa59 { get; set; }
+            public double? bsa60 { get; set; }
+            public double? bsa61 { get; set; }
+            public double? bsa62 { get; set; }
+            public double? bsa63 { get; set; }
+            public double? bsa167 { get; set; }
+            public double? bsa64 { get; set; }
+            public double? bsa56 { get; set; }
+            public double? bsa65 { get; set; }
+            public double? bsa66 { get; set; }
+            public double? bsa168 { get; set; }
+            public double? bsa68 { get; set; }
+            public double? bsa170 { get; set; }
+            public double? bsa171 { get; set; }
+            public double? bsa172 { get; set; }
+            public double? bsa69 { get; set; }
+            public double? bsa76 { get; set; }
+            public double? bsa70 { get; set; }
+            public double? bsa71 { get; set; }
+            public double? bsa173 { get; set; }
+            public double? bsa72 { get; set; }
+            public double? bsa73 { get; set; }
+            public double? bsa74 { get; set; }
+            public double? bsa77 { get; set; }
+            public double? bsa79 { get; set; }
+            public double? bsa175 { get; set; }
+            public double? bsa176 { get; set; }
+            public double? bsa86 { get; set; }
+            public double? bsa91 { get; set; }
+            public double? bsa87 { get; set; }
+            public double? bsa89 { get; set; }
+            public double? bsa177 { get; set; }
+            public double? bsa178 { get; set; }
+            public double? bsa210 { get; set; }
+            public double? bsa92 { get; set; }
+            public double? bsa93 { get; set; }
+            public double? bsa94 { get; set; }
+            public double? bsa211 { get; set; }
             public double? bsi198 { get; set; }
             public double? bsi199 { get; set; }
             public double? bsi139 { get; set; }
@@ -423,9 +423,9 @@ namespace StockFilterToolsV1.Models
             public double? bsi145 { get; set; }
             public double? bsi195 { get; set; }
             public double? bsi196 { get; set; }
-            public double bsa188 { get; set; }
+            public double? bsa188 { get; set; }
             public double? bsi146 { get; set; }
-            public double bsa209 { get; set; }
+            public double? bsa209 { get; set; }
             public double? bsi200 { get; set; }
             public double? bsi201 { get; set; }
             public double? bsi197 { get; set; }
@@ -439,7 +439,7 @@ namespace StockFilterToolsV1.Models
             public double? bsi147 { get; set; }
             public double? bsi148 { get; set; }
             public double? bsi149 { get; set; }
-            public double bsa174 { get; set; }
+            public double? bsa174 { get; set; }
             public double? bsi150 { get; set; }
             public double? bsa75 { get; set; }
             public double? bsi151 { get; set; }
@@ -507,16 +507,16 @@ namespace StockFilterToolsV1.Models
             public double? otherAssetBank { get; set; }
             public double? bsb113 { get; set; }
             public double? otherLiabilties { get; set; }
-            public double bsa78 { get; set; }
-            public double bsa95 { get; set; }
-            public double bsa1 { get; set; }
-            public double bsa30 { get; set; }
-            public double bsa36 { get; set; }
-            public double otherAssetNonBank { get; set; }
-            public double bsa55 { get; set; }
-            public double bsa67 { get; set; }
-            public double bsa53 { get; set; }
-            public double bsa2 { get; set; }
+            public double? bsa78 { get; set; }
+            public double? bsa95 { get; set; }
+            public double? bsa1 { get; set; }
+            public double? bsa30 { get; set; }
+            public double? bsa36 { get; set; }
+            public double? otherAssetNonBank { get; set; }
+            public double? bsa55 { get; set; }
+            public double? bsa67 { get; set; }
+            public double? bsa53 { get; set; }
+            public double? bsa2 { get; set; }
             public double? bsb97 { get; set; }
             public double? bsb100 { get; set; }
             public double? bsb101 { get; set; }
@@ -524,19 +524,19 @@ namespace StockFilterToolsV1.Models
             public double? bsb104 { get; set; }
             public double? bsb105 { get; set; }
             public double? bsb107 { get; set; }
-            public double bsb108 { get; set; }
+            public double? bsb108 { get; set; }
             public double? bsb109 { get; set; }
-            public double bsa43 { get; set; }
-            public double bsa44 { get; set; }
-            public double bsa45 { get; set; }
-            public double bsa46 { get; set; }
-            public double bsa47 { get; set; }
-            public double bsa29 { get; set; }
-            public double bsa33 { get; set; }
-            public double bsa40 { get; set; }
+            public double? bsa43 { get; set; }
+            public double? bsa44 { get; set; }
+            public double? bsa45 { get; set; }
+            public double? bsa46 { get; set; }
+            public double? bsa47 { get; set; }
+            public double? bsa29 { get; set; }
+            public double? bsa33 { get; set; }
+            public double? bsa40 { get; set; }
             public double? bsb110 { get; set; }
-            public double bsa96 { get; set; }
-            public double bsa54 { get; set; }
+            public double? bsa96 { get; set; }
+            public double? bsa54 { get; set; }
             public double? bsb111 { get; set; }
             public double? bsb112 { get; set; }
             public double? bsb114 { get; set; }
@@ -544,108 +544,108 @@ namespace StockFilterToolsV1.Models
             public double? bsb116 { get; set; }
             public double? bsb117 { get; set; }
             public double? bsb118 { get; set; }
-            public double bsa80 { get; set; }
+            public double? bsa80 { get; set; }
             public double? bsb119 { get; set; }
-            public double bsa81 { get; set; }
-            public double bsa83 { get; set; }
-            public double bsb120 { get; set; }
-            public double bsa82 { get; set; }
+            public double? bsa81 { get; set; }
+            public double? bsa83 { get; set; }
+            public double? bsb120 { get; set; }
+            public double? bsa82 { get; set; }
             public double? bsb121 { get; set; }
             public object bsb174 { get; set; }
-            public double bsa85 { get; set; }
-            public double bsa84 { get; set; }
-            public double bsa90 { get; set; }
-            public double bsa3 { get; set; }
-            public double bsa4 { get; set; }
-            public double bsa5 { get; set; }
-            public double bsa6 { get; set; }
-            public double bsa7 { get; set; }
-            public double bsa8 { get; set; }
-            public double bsa9 { get; set; }
-            public double bsa10 { get; set; }
-            public double bsa11 { get; set; }
-            public double bsa12 { get; set; }
-            public double bsa159 { get; set; }
-            public double bsa13 { get; set; }
-            public double bsa14 { get; set; }
-            public double bsI141 { get; set; }
-            public double bsa15 { get; set; }
-            public double bsa16 { get; set; }
-            public double bsa17 { get; set; }
-            public double bsa18 { get; set; }
-            public double bsa19 { get; set; }
-            public double bsa20 { get; set; }
-            public double bsa21 { get; set; }
-            public double bsa22 { get; set; }
-            public double bsa160 { get; set; }
-            public double bsa165 { get; set; }
-            public double bsa169 { get; set; }
-            public double bsa23 { get; set; }
-            public double bsa24 { get; set; }
-            public double bsa25 { get; set; }
-            public double bsa161 { get; set; }
-            public double bsS134 { get; set; }
-            public double bsa26 { get; set; }
-            public double bsa162 { get; set; }
-            public double bsa27 { get; set; }
-            public double bsa28 { get; set; }
-            public double bsa31 { get; set; }
-            public double bsa32 { get; set; }
-            public double bsa34 { get; set; }
-            public double bsa35 { get; set; }
-            public double bsa37 { get; set; }
-            public double bsa38 { get; set; }
-            public double bsa41 { get; set; }
-            public double bsa42 { get; set; }
-            public double bsa163 { get; set; }
-            public double bsa164 { get; set; }
-            public double bsa39 { get; set; }
-            public double bsa49 { get; set; }
-            public double bsa50 { get; set; }
-            public double bsa51 { get; set; }
-            public double bsa166 { get; set; }
-            public double bsa52 { get; set; }
-            public double bsa48 { get; set; }
-            public double bsa57 { get; set; }
-            public double bsa58 { get; set; }
-            public double bsa59 { get; set; }
-            public double bsa60 { get; set; }
-            public double bsa61 { get; set; }
-            public double bsa62 { get; set; }
-            public double bsa63 { get; set; }
-            public double bsa167 { get; set; }
-            public double bsa64 { get; set; }
-            public double bsa56 { get; set; }
-            public double bsa65 { get; set; }
-            public double bsa66 { get; set; }
-            public double bsa168 { get; set; }
-            public double bsa68 { get; set; }
-            public double bsa170 { get; set; }
-            public double bsa171 { get; set; }
-            public double bsa172 { get; set; }
-            public double bsa69 { get; set; }
-            public double bsa76 { get; set; }
-            public double bsa70 { get; set; }
-            public double bsa71 { get; set; }
-            public double bsa173 { get; set; }
-            public double bsa72 { get; set; }
-            public double bsa73 { get; set; }
-            public double bsa74 { get; set; }
-            public double bsa77 { get; set; }
-            public double bsa79 { get; set; }
-            public double bsa175 { get; set; }
-            public double bsa176 { get; set; }
-            public double bsa86 { get; set; }
-            public double bsa91 { get; set; }
-            public double bsa87 { get; set; }
-            public double bsa89 { get; set; }
-            public double bsa177 { get; set; }
-            public double bsa178 { get; set; }
-            public double bsa210 { get; set; }
-            public double bsa92 { get; set; }
-            public double bsa93 { get; set; }
-            public double bsa94 { get; set; }
-            public double bsa211 { get; set; }
+            public double? bsa85 { get; set; }
+            public double? bsa84 { get; set; }
+            public double? bsa90 { get; set; }
+            public double? bsa3 { get; set; }
+            public double? bsa4 { get; set; }
+            public double? bsa5 { get; set; }
+            public double? bsa6 { get; set; }
+            public double? bsa7 { get; set; }
+            public double? bsa8 { get; set; }
+            public double? bsa9 { get; set; }
+            public double? bsa10 { get; set; }
+            public double? bsa11 { get; set; }
+            public double? bsa12 { get; set; }
+            public double? bsa159 { get; set; }
+            public double? bsa13 { get; set; }
+            public double? bsa14 { get; set; }
+            public double? bsI141 { get; set; }
+            public double? bsa15 { get; set; }
+            public double? bsa16 { get; set; }
+            public double? bsa17 { get; set; }
+            public double? bsa18 { get; set; }
+            public double? bsa19 { get; set; }
+            public double? bsa20 { get; set; }
+            public double? bsa21 { get; set; }
+            public double? bsa22 { get; set; }
+            public double? bsa160 { get; set; }
+            public double? bsa165 { get; set; }
+            public double? bsa169 { get; set; }
+            public double? bsa23 { get; set; }
+            public double? bsa24 { get; set; }
+            public double? bsa25 { get; set; }
+            public double? bsa161 { get; set; }
+            public double? bsS134 { get; set; }
+            public double? bsa26 { get; set; }
+            public double? bsa162 { get; set; }
+            public double? bsa27 { get; set; }
+            public double? bsa28 { get; set; }
+            public double? bsa31 { get; set; }
+            public double? bsa32 { get; set; }
+            public double? bsa34 { get; set; }
+            public double? bsa35 { get; set; }
+            public double? bsa37 { get; set; }
+            public double? bsa38 { get; set; }
+            public double? bsa41 { get; set; }
+            public double? bsa42 { get; set; }
+            public double? bsa163 { get; set; }
+            public double? bsa164 { get; set; }
+            public double? bsa39 { get; set; }
+            public double? bsa49 { get; set; }
+            public double? bsa50 { get; set; }
+            public double? bsa51 { get; set; }
+            public double? bsa166 { get; set; }
+            public double? bsa52 { get; set; }
+            public double? bsa48 { get; set; }
+            public double? bsa57 { get; set; }
+            public double? bsa58 { get; set; }
+            public double? bsa59 { get; set; }
+            public double? bsa60 { get; set; }
+            public double? bsa61 { get; set; }
+            public double? bsa62 { get; set; }
+            public double? bsa63 { get; set; }
+            public double? bsa167 { get; set; }
+            public double? bsa64 { get; set; }
+            public double? bsa56 { get; set; }
+            public double? bsa65 { get; set; }
+            public double? bsa66 { get; set; }
+            public double? bsa168 { get; set; }
+            public double? bsa68 { get; set; }
+            public double? bsa170 { get; set; }
+            public double? bsa171 { get; set; }
+            public double? bsa172 { get; set; }
+            public double? bsa69 { get; set; }
+            public double? bsa76 { get; set; }
+            public double? bsa70 { get; set; }
+            public double? bsa71 { get; set; }
+            public double? bsa173 { get; set; }
+            public double? bsa72 { get; set; }
+            public double? bsa73 { get; set; }
+            public double? bsa74 { get; set; }
+            public double? bsa77 { get; set; }
+            public double? bsa79 { get; set; }
+            public double? bsa175 { get; set; }
+            public double? bsa176 { get; set; }
+            public double? bsa86 { get; set; }
+            public double? bsa91 { get; set; }
+            public double? bsa87 { get; set; }
+            public double? bsa89 { get; set; }
+            public double? bsa177 { get; set; }
+            public double? bsa178 { get; set; }
+            public double? bsa210 { get; set; }
+            public double? bsa92 { get; set; }
+            public double? bsa93 { get; set; }
+            public double? bsa94 { get; set; }
+            public double? bsa211 { get; set; }
             public double? bsi198 { get; set; }
             public double? bsi199 { get; set; }
             public double? bsi139 { get; set; }
@@ -661,9 +661,9 @@ namespace StockFilterToolsV1.Models
             public double? bsi145 { get; set; }
             public double? bsi195 { get; set; }
             public double? bsi196 { get; set; }
-            public double bsa188 { get; set; }
+            public double? bsa188 { get; set; }
             public double? bsi146 { get; set; }
-            public double bsa209 { get; set; }
+            public double? bsa209 { get; set; }
             public double? bsi200 { get; set; }
             public double? bsi201 { get; set; }
             public double? bsi197 { get; set; }
@@ -677,7 +677,7 @@ namespace StockFilterToolsV1.Models
             public double? bsi147 { get; set; }
             public double? bsi148 { get; set; }
             public double? bsi149 { get; set; }
-            public double bsa174 { get; set; }
+            public double? bsa174 { get; set; }
             public double? bsi150 { get; set; }
             public double? bsa75 { get; set; }
             public double? bsi151 { get; set; }
@@ -745,16 +745,16 @@ namespace StockFilterToolsV1.Models
         public double? otherAssetBank { get; set; }
         public double? bsb113 { get; set; }
         public double? otherLiabilties { get; set; }
-        public double bsa78 { get; set; }
-        public double bsa95 { get; set; }
-        public double bsa1 { get; set; }
-        public double bsa30 { get; set; }
-        public double bsa36 { get; set; }
-        public double otherAssetNonBank { get; set; }
-        public double bsa55 { get; set; }
-        public double bsa67 { get; set; }
-        public double bsa53 { get; set; }
-        public double bsa2 { get; set; }
+        public double? bsa78 { get; set; }
+        public double? bsa95 { get; set; }
+        public double? bsa1 { get; set; }
+        public double? bsa30 { get; set; }
+        public double? bsa36 { get; set; }
+        public double? otherAssetNonBank { get; set; }
+        public double? bsa55 { get; set; }
+        public double? bsa67 { get; set; }
+        public double? bsa53 { get; set; }
+        public double? bsa2 { get; set; }
         public double? bsb97 { get; set; }
         public double? bsb100 { get; set; }
         public double? bsb101 { get; set; }
@@ -762,19 +762,19 @@ namespace StockFilterToolsV1.Models
         public double? bsb104 { get; set; }
         public double? bsb105 { get; set; }
         public double? bsb107 { get; set; }
-        public double bsb108 { get; set; }
+        public double? bsb108 { get; set; }
         public double? bsb109 { get; set; }
-        public double bsa43 { get; set; }
-        public double bsa44 { get; set; }
-        public double bsa45 { get; set; }
-        public double bsa46 { get; set; }
-        public double bsa47 { get; set; }
-        public double bsa29 { get; set; }
-        public double bsa33 { get; set; }
-        public double bsa40 { get; set; }
+        public double? bsa43 { get; set; }
+        public double? bsa44 { get; set; }
+        public double? bsa45 { get; set; }
+        public double? bsa46 { get; set; }
+        public double? bsa47 { get; set; }
+        public double? bsa29 { get; set; }
+        public double? bsa33 { get; set; }
+        public double? bsa40 { get; set; }
         public double? bsb110 { get; set; }
-        public double bsa96 { get; set; }
-        public double bsa54 { get; set; }
+        public double? bsa96 { get; set; }
+        public double? bsa54 { get; set; }
         public double? bsb111 { get; set; }
         public double? bsb112 { get; set; }
         public double? bsb114 { get; set; }
@@ -782,108 +782,108 @@ namespace StockFilterToolsV1.Models
         public double? bsb116 { get; set; }
         public double? bsb117 { get; set; }
         public double? bsb118 { get; set; }
-        public double bsa80 { get; set; }
+        public double? bsa80 { get; set; }
         public double? bsb119 { get; set; }
-        public double bsa81 { get; set; }
-        public double bsa83 { get; set; }
-        public double bsb120 { get; set; }
-        public double bsa82 { get; set; }
+        public double? bsa81 { get; set; }
+        public double? bsa83 { get; set; }
+        public double? bsb120 { get; set; }
+        public double? bsa82 { get; set; }
         public double? bsb121 { get; set; }
         public object bsb174 { get; set; }
-        public double bsa85 { get; set; }
-        public double bsa84 { get; set; }
-        public double bsa90 { get; set; }
-        public double bsa3 { get; set; }
-        public double bsa4 { get; set; }
-        public double bsa5 { get; set; }
-        public double bsa6 { get; set; }
-        public double bsa7 { get; set; }
-        public double bsa8 { get; set; }
-        public double bsa9 { get; set; }
-        public double bsa10 { get; set; }
-        public double bsa11 { get; set; }
-        public double bsa12 { get; set; }
-        public double bsa159 { get; set; }
-        public double bsa13 { get; set; }
-        public double bsa14 { get; set; }
-        public double bsI141 { get; set; }
-        public double bsa15 { get; set; }
-        public double bsa16 { get; set; }
-        public double bsa17 { get; set; }
-        public double bsa18 { get; set; }
-        public double bsa19 { get; set; }
-        public double bsa20 { get; set; }
-        public double bsa21 { get; set; }
-        public double bsa22 { get; set; }
-        public double bsa160 { get; set; }
-        public double bsa165 { get; set; }
-        public double bsa169 { get; set; }
-        public double bsa23 { get; set; }
-        public double bsa24 { get; set; }
-        public double bsa25 { get; set; }
-        public double bsa161 { get; set; }
-        public double bsS134 { get; set; }
-        public double bsa26 { get; set; }
-        public double bsa162 { get; set; }
-        public double bsa27 { get; set; }
-        public double bsa28 { get; set; }
-        public double bsa31 { get; set; }
-        public double bsa32 { get; set; }
-        public double bsa34 { get; set; }
-        public double bsa35 { get; set; }
-        public double bsa37 { get; set; }
-        public double bsa38 { get; set; }
-        public double bsa41 { get; set; }
-        public double bsa42 { get; set; }
-        public double bsa163 { get; set; }
-        public double bsa164 { get; set; }
-        public double bsa39 { get; set; }
-        public double bsa49 { get; set; }
-        public double bsa50 { get; set; }
-        public double bsa51 { get; set; }
-        public double bsa166 { get; set; }
-        public double bsa52 { get; set; }
-        public double bsa48 { get; set; }
-        public double bsa57 { get; set; }
-        public double bsa58 { get; set; }
-        public double bsa59 { get; set; }
-        public double bsa60 { get; set; }
-        public double bsa61 { get; set; }
-        public double bsa62 { get; set; }
-        public double bsa63 { get; set; }
-        public double bsa167 { get; set; }
-        public double bsa64 { get; set; }
-        public double bsa56 { get; set; }
-        public double bsa65 { get; set; }
-        public double bsa66 { get; set; }
-        public double bsa168 { get; set; }
-        public double bsa68 { get; set; }
-        public double bsa170 { get; set; }
-        public double bsa171 { get; set; }
-        public double bsa172 { get; set; }
-        public double bsa69 { get; set; }
-        public double bsa76 { get; set; }
-        public double bsa70 { get; set; }
-        public double bsa71 { get; set; }
-        public double bsa173 { get; set; }
-        public double bsa72 { get; set; }
-        public double bsa73 { get; set; }
-        public double bsa74 { get; set; }
-        public double bsa77 { get; set; }
-        public double bsa79 { get; set; }
-        public double bsa175 { get; set; }
-        public double bsa176 { get; set; }
-        public double bsa86 { get; set; }
-        public double bsa91 { get; set; }
-        public double bsa87 { get; set; }
-        public double bsa89 { get; set; }
-        public double bsa177 { get; set; }
-        public double bsa178 { get; set; }
-        public double bsa210 { get; set; }
-        public double bsa92 { get; set; }
-        public double bsa93 { get; set; }
-        public double bsa94 { get; set; }
-        public double bsa211 { get; set; }
+        public double? bsa85 { get; set; }
+        public double? bsa84 { get; set; }
+        public double? bsa90 { get; set; }
+        public double? bsa3 { get; set; }
+        public double? bsa4 { get; set; }
+        public double? bsa5 { get; set; }
+        public double? bsa6 { get; set; }
+        public double? bsa7 { get; set; }
+        public double? bsa8 { get; set; }
+        public double? bsa9 { get; set; }
+        public double? bsa10 { get; set; }
+        public double? bsa11 { get; set; }
+        public double? bsa12 { get; set; }
+        public double? bsa159 { get; set; }
+        public double? bsa13 { get; set; }
+        public double? bsa14 { get; set; }
+        public double? bsI141 { get; set; }
+        public double? bsa15 { get; set; }
+        public double? bsa16 { get; set; }
+        public double? bsa17 { get; set; }
+        public double? bsa18 { get; set; }
+        public double? bsa19 { get; set; }
+        public double? bsa20 { get; set; }
+        public double? bsa21 { get; set; }
+        public double? bsa22 { get; set; }
+        public double? bsa160 { get; set; }
+        public double? bsa165 { get; set; }
+        public double? bsa169 { get; set; }
+        public double? bsa23 { get; set; }
+        public double? bsa24 { get; set; }
+        public double? bsa25 { get; set; }
+        public double? bsa161 { get; set; }
+        public double? bsS134 { get; set; }
+        public double? bsa26 { get; set; }
+        public double? bsa162 { get; set; }
+        public double? bsa27 { get; set; }
+        public double? bsa28 { get; set; }
+        public double? bsa31 { get; set; }
+        public double? bsa32 { get; set; }
+        public double? bsa34 { get; set; }
+        public double? bsa35 { get; set; }
+        public double? bsa37 { get; set; }
+        public double? bsa38 { get; set; }
+        public double? bsa41 { get; set; }
+        public double? bsa42 { get; set; }
+        public double? bsa163 { get; set; }
+        public double? bsa164 { get; set; }
+        public double? bsa39 { get; set; }
+        public double? bsa49 { get; set; }
+        public double? bsa50 { get; set; }
+        public double? bsa51 { get; set; }
+        public double? bsa166 { get; set; }
+        public double? bsa52 { get; set; }
+        public double? bsa48 { get; set; }
+        public double? bsa57 { get; set; }
+        public double? bsa58 { get; set; }
+        public double? bsa59 { get; set; }
+        public double? bsa60 { get; set; }
+        public double? bsa61 { get; set; }
+        public double? bsa62 { get; set; }
+        public double? bsa63 { get; set; }
+        public double? bsa167 { get; set; }
+        public double? bsa64 { get; set; }
+        public double? bsa56 { get; set; }
+        public double? bsa65 { get; set; }
+        public double? bsa66 { get; set; }
+        public double? bsa168 { get; set; }
+        public double? bsa68 { get; set; }
+        public double? bsa170 { get; set; }
+        public double? bsa171 { get; set; }
+        public double? bsa172 { get; set; }
+        public double? bsa69 { get; set; }
+        public double? bsa76 { get; set; }
+        public double? bsa70 { get; set; }
+        public double? bsa71 { get; set; }
+        public double? bsa173 { get; set; }
+        public double? bsa72 { get; set; }
+        public double? bsa73 { get; set; }
+        public double? bsa74 { get; set; }
+        public double? bsa77 { get; set; }
+        public double? bsa79 { get; set; }
+        public double? bsa175 { get; set; }
+        public double? bsa176 { get; set; }
+        public double? bsa86 { get; set; }
+        public double? bsa91 { get; set; }
+        public double? bsa87 { get; set; }
+        public double? bsa89 { get; set; }
+        public double? bsa177 { get; set; }
+        public double? bsa178 { get; set; }
+        public double? bsa210 { get; set; }
+        public double? bsa92 { get; set; }
+        public double? bsa93 { get; set; }
+        public double? bsa94 { get; set; }
+        public double? bsa211 { get; set; }
         public double? bsi198 { get; set; }
         public double? bsi199 { get; set; }
         public double? bsi139 { get; set; }
@@ -899,9 +899,9 @@ namespace StockFilterToolsV1.Models
         public double? bsi145 { get; set; }
         public double? bsi195 { get; set; }
         public double? bsi196 { get; set; }
-        public double bsa188 { get; set; }
+        public double? bsa188 { get; set; }
         public double? bsi146 { get; set; }
-        public double bsa209 { get; set; }
+        public double? bsa209 { get; set; }
         public double? bsi200 { get; set; }
         public double? bsi201 { get; set; }
         public double? bsi197 { get; set; }
@@ -915,7 +915,7 @@ namespace StockFilterToolsV1.Models
         public double? bsi147 { get; set; }
         public double? bsi148 { get; set; }
         public double? bsi149 { get; set; }
-        public double bsa174 { get; set; }
+        public double? bsa174 { get; set; }
         public double? bsi150 { get; set; }
         public double? bsa75 { get; set; }
         public double? bsi151 { get; set; }

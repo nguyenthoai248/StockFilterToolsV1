@@ -16,15 +16,15 @@ namespace StockFilterToolsV1
             InitializeComponent();
             var vm = new MainViewModel();
             this.DataContext = vm;
-            vm.IndustryColumns.CollectionChanged += IndustryColumns_CollectionChanged;
+            vm.StockDataColumns.CollectionChanged += StockDataColumns_CollectionChanged;
         }
 
-        private void IndustryColumns_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void StockDataColumns_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            IndustryStockDataGrid.Columns.Clear();
+            StockDataGrid.Columns.Clear();
             foreach (var col in ((ObservableCollection<DataGridColumn>)sender))
             {
-                IndustryStockDataGrid.Columns.Add(col);
+                StockDataGrid.Columns.Add(col);
             }
         }
     }

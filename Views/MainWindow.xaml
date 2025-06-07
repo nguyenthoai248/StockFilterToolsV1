@@ -27,92 +27,91 @@
             <Button Content="Tìm kiếm" Command="{Binding FetchCommand}"
             CommandParameter="{Binding StockCode}" Width="130"/>
             <Button Content="Cập nhật CSDL" Command="{Binding SyncDataCommand}" Width="130" Margin="0,10,0,0"/>
+            <Button Content="Lọc theo tiêu chí" Command="" Width="130" Margin="0,10,0,0"/>
         </StackPanel>
 
         <!-- Khu vực bên phải -->
         <Grid Grid.Column="1" Margin="10">
             <Grid>
-                <StackPanel>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <!-- Thông tin chung -->
+                    <RowDefinition Height="*" />
+                    <!-- DataGrid co giãn -->
+                </Grid.RowDefinitions>
 
-                    <!-- 🔷 Thông tin chung cổ phiếu -->
-                    <Border Background="#F9FAFB" Padding="12" CornerRadius="6" Margin="0 0 0 10" BorderBrush="#D1D5DB" BorderThickness="1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                <!-- 🔷 Thông tin chung cổ phiếu -->
+                <Border Grid.Row="0"
+                Background="#F9FAFB" Padding="12" CornerRadius="6" Margin="0 0 0 10" 
+                BorderBrush="#D1D5DB" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                            <!-- Mã cổ phiếu -->
-                            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                                <TextBlock Text="Mã cổ phiếu: " FontSize ="16" FontWeight="Bold" Foreground="#111827"/>
-                                <TextBlock Text="{Binding ComStockCode}" FontSize ="16" FontWeight="Bold" Foreground="#374151"/>
-                            </StackPanel>
+                        <!-- Mã cổ phiếu -->
+                        <StackPanel Orientation="Horizontal" Grid.Column="0">
+                            <TextBlock Text="Mã cổ phiếu: " FontSize ="16" FontWeight="Bold" Foreground="#111827"/>
+                            <TextBlock Text="{Binding ComStockCode}" FontSize ="16" FontWeight="Bold" Foreground="#374151"/>
+                        </StackPanel>
 
-                            <!-- Tên công ty -->
-                            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                <TextBlock Text="Tên công ty: " FontSize ="16" FontWeight="Bold" Foreground="#111827"/>
-                                <TextBlock Text="{Binding CompanyName}" FontSize ="16" FontWeight="Bold" Foreground="#374151"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+                        <!-- Tên công ty -->
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock Text="Tên công ty: " FontSize ="16" FontWeight="Bold" Foreground="#111827"/>
+                            <TextBlock Text="{Binding CompanyName}" FontSize ="16" FontWeight="Bold" Foreground="#374151"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
-                    <!-- 🔷 Nhóm 1: Ngân hàng -->
-                    <GroupBox Header="Nhóm Ngân hàng" Name="BankGroupBox" Visibility="Collapsed">
-                        <DataGrid Name="BankStockDataGrid" AutoGenerateColumns="True"/>
-                    </GroupBox>
+                <!-- 📊 DataGrid -->
+                <DataGrid Grid.Row="1"
+                    Name="StockDataGrid" 
+                    ItemsSource="{Binding StockDataRows}" 
+                    AutoGenerateColumns="False" 
+                    Visibility="{Binding IsGridVisible, Converter={StaticResource BoolToVisibilityConverter}}" 
+                    HeadersVisibility="Column"
+                    CanUserAddRows="False"
+                    CanUserResizeColumns="True"
+                    CanUserResizeRows="False"
+                    CanUserSortColumns="False"
+                    BorderThickness="0"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    IsReadOnly="True">
 
-                    <!-- 🔷 Nhóm 2: Bất động sản -->
-                    <GroupBox Name="RealEstateGroupBox" Visibility="Collapsed">
-                        <DataGrid Name="RealEstateStockDataGrid"
-                          AutoGenerateColumns="True"
-                          UseLayoutRounding="False"
-                          BorderThickness="0"
-                          HorizontalAlignment="Right"
-                          Width="618"/>
-                    </GroupBox>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="DarkSlateGray"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="Padding" Value="8"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
 
-                    <!-- 🔷 Nhóm 3: Công nghiệp -->
-                    <DataGrid Name="IndustryStockDataGrid" 
-                      ItemsSource="{Binding Rows}" 
-                      AutoGenerateColumns="False" 
-                      Visibility="{Binding IsGridVisible, Converter={StaticResource BoolToVisibilityConverter}}" 
-                      HeadersVisibility="Column"
-                      CanUserAddRows="False"
-                      CanUserSortColumns="False"
-                      BorderThickness="0">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IndicatorName}" Value="">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                </DataGrid>
 
-                        <DataGrid.ColumnHeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="Background" Value="DarkSlateGray"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                <Setter Property="Padding" Value="8"/>
-                            </Style>
-                        </DataGrid.ColumnHeaderStyle>
-
-                        <DataGrid.RowStyle>
-                            <Style TargetType="DataGridRow">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IndicatorName}" Value="">
-                                        <Setter Property="Background" Value="LightGray"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGrid.RowStyle>
-                    </DataGrid>
-
-                </StackPanel>
-                <!-- Loading Overlay - nằm chồng lên StackPanel -->
-                <Grid Background="#80000000"
-                  Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" 
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  Panel.ZIndex="10">
+                <!-- 🔄 Loading overlay -->
+                <Grid Grid.RowSpan="2"
+                      Background="#80000000"
+                      Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" 
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Panel.ZIndex="10">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                         <ProgressBar IsIndeterminate="True" Width="200" Height="20"/>
                         <TextBlock Text="Đang tải dữ liệu..." Foreground="White" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>

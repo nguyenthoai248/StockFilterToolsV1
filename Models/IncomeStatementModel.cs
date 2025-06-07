@@ -31,9 +31,9 @@ namespace StockFilterToolsV1.Models
             public double? isb30 { get; set; }
             public double? isb38 { get; set; }
             public double? isb41 { get; set; }
-            public double isa20 { get; set; }
-            public double isa1 { get; set; }
-            public double isa11 { get; set; }
+            public double? isa20 { get; set; }
+            public double? isa1 { get; set; }
+            public double? isa11 { get; set; }
             public object rtq29 { get; set; }
             public double? isb25 { get; set; }
             public double? isb26 { get; set; }
@@ -48,28 +48,28 @@ namespace StockFilterToolsV1.Models
             public double? isb37 { get; set; }
             public double? isb39 { get; set; }
             public double? isb40 { get; set; }
-            public double isa16 { get; set; }
-            public double isa17 { get; set; }
-            public double isa18 { get; set; }
-            public double isa19 { get; set; }
-            public double isa21 { get; set; }
-            public double isa22 { get; set; }
-            public double isa23 { get; set; }
-            public double isa2 { get; set; }
-            public double isa3 { get; set; }
-            public double isa4 { get; set; }
-            public double isa5 { get; set; }
-            public double isa6 { get; set; }
-            public double isa7 { get; set; }
-            public double isa8 { get; set; }
-            public double isa15 { get; set; }
-            public double isa9 { get; set; }
-            public double isa10 { get; set; }
-            public double isa12 { get; set; }
-            public double isa13 { get; set; }
-            public double isa14 { get; set; }
-            public double isa24 { get; set; }
-            public double isa102 { get; set; }
+            public double? isa16 { get; set; }
+            public double? isa17 { get; set; }
+            public double? isa18 { get; set; }
+            public double? isa19 { get; set; }
+            public double? isa21 { get; set; }
+            public double? isa22 { get; set; }
+            public double? isa23 { get; set; }
+            public double? isa2 { get; set; }
+            public double? isa3 { get; set; }
+            public double? isa4 { get; set; }
+            public double? isa5 { get; set; }
+            public double? isa6 { get; set; }
+            public double? isa7 { get; set; }
+            public double? isa8 { get; set; }
+            public double? isa15 { get; set; }
+            public double? isa9 { get; set; }
+            public double? isa10 { get; set; }
+            public double? isa12 { get; set; }
+            public double? isa13 { get; set; }
+            public double? isa14 { get; set; }
+            public double? isa24 { get; set; }
+            public double? isa102 { get; set; }
             public double? isi103 { get; set; }
             public double? isi104 { get; set; }
             public double? isi51 { get; set; }
@@ -201,9 +201,9 @@ namespace StockFilterToolsV1.Models
             public double? iss165 { get; set; }
             public double? iss166 { get; set; }
             public double? iss167 { get; set; }
-            public double cfa2 { get; set; }
-            public double ebit { get; set; }
-            public double ebitDa { get; set; }
+            public double? cfa2 { get; set; }
+            public double? ebit { get; set; }
+            public double? ebitDa { get; set; }
         }
 
         public class Quarterly
@@ -215,9 +215,9 @@ namespace StockFilterToolsV1.Models
             public double? isb30 { get; set; }
             public double? isb38 { get; set; }
             public double? isb41 { get; set; }
-            public double isa20 { get; set; }
-            public double isa1 { get; set; }
-            public double isa11 { get; set; }
+            public double? isa20 { get; set; }
+            public double? isa1 { get; set; }
+            public double? isa11 { get; set; }
             public double? rtq29 { get; set; }
             public double? isb25 { get; set; }
             public double? isb26 { get; set; }
@@ -232,28 +232,28 @@ namespace StockFilterToolsV1.Models
             public double? isb37 { get; set; }
             public double? isb39 { get; set; }
             public double? isb40 { get; set; }
-            public double isa16 { get; set; }
-            public double isa17 { get; set; }
-            public double isa18 { get; set; }
-            public double isa19 { get; set; }
-            public double isa21 { get; set; }
-            public double isa22 { get; set; }
-            public double isa23 { get; set; }
-            public double isa2 { get; set; }
-            public double isa3 { get; set; }
-            public double isa4 { get; set; }
-            public double isa5 { get; set; }
-            public double isa6 { get; set; }
-            public double isa7 { get; set; }
-            public double isa8 { get; set; }
-            public double isa15 { get; set; }
-            public double isa9 { get; set; }
-            public double isa10 { get; set; }
-            public double isa12 { get; set; }
-            public double isa13 { get; set; }
-            public double isa14 { get; set; }
-            public double isa24 { get; set; }
-            public double isa102 { get; set; }
+            public double? isa16 { get; set; }
+            public double? isa17 { get; set; }
+            public double? isa18 { get; set; }
+            public double? isa19 { get; set; }
+            public double? isa21 { get; set; }
+            public double? isa22 { get; set; }
+            public double? isa23 { get; set; }
+            public double? isa2 { get; set; }
+            public double? isa3 { get; set; }
+            public double? isa4 { get; set; }
+            public double? isa5 { get; set; }
+            public double? isa6 { get; set; }
+            public double? isa7 { get; set; }
+            public double? isa8 { get; set; }
+            public double? isa15 { get; set; }
+            public double? isa9 { get; set; }
+            public double? isa10 { get; set; }
+            public double? isa12 { get; set; }
+            public double? isa13 { get; set; }
+            public double? isa14 { get; set; }
+            public double? isa24 { get; set; }
+            public double? isa102 { get; set; }
             public double? isi103 { get; set; }
             public double? isi104 { get; set; }
             public double? isi51 { get; set; }
@@ -385,9 +385,9 @@ namespace StockFilterToolsV1.Models
             public double? iss165 { get; set; }
             public double? iss166 { get; set; }
             public double? iss167 { get; set; }
-            public double cfa2 { get; set; }
-            public double ebit { get; set; }
-            public double ebitDa { get; set; }
+            public double? cfa2 { get; set; }
+            public double? ebit { get; set; }
+            public double? ebitDa { get; set; }
         }
 
         public class SixMonth
@@ -399,9 +399,9 @@ namespace StockFilterToolsV1.Models
             public double? isb30 { get; set; }
             public double? isb38 { get; set; }
             public double? isb41 { get; set; }
-            public double isa20 { get; set; }
-            public double isa1 { get; set; }
-            public double isa11 { get; set; }
+            public double? isa20 { get; set; }
+            public double? isa1 { get; set; }
+            public double? isa11 { get; set; }
             public object rtq29 { get; set; }
             public double? isb25 { get; set; }
             public double? isb26 { get; set; }
@@ -416,28 +416,28 @@ namespace StockFilterToolsV1.Models
             public double? isb37 { get; set; }
             public double? isb39 { get; set; }
             public double? isb40 { get; set; }
-            public double isa16 { get; set; }
-            public double isa17 { get; set; }
-            public double isa18 { get; set; }
-            public double isa19 { get; set; }
-            public double isa21 { get; set; }
-            public double isa22 { get; set; }
-            public double isa23 { get; set; }
-            public double isa2 { get; set; }
-            public double isa3 { get; set; }
-            public double isa4 { get; set; }
-            public double isa5 { get; set; }
-            public double isa6 { get; set; }
-            public double isa7 { get; set; }
-            public double isa8 { get; set; }
-            public double isa15 { get; set; }
-            public double isa9 { get; set; }
-            public double isa10 { get; set; }
-            public double isa12 { get; set; }
-            public double isa13 { get; set; }
-            public double isa14 { get; set; }
-            public double isa24 { get; set; }
-            public double isa102 { get; set; }
+            public double? isa16 { get; set; }
+            public double? isa17 { get; set; }
+            public double? isa18 { get; set; }
+            public double? isa19 { get; set; }
+            public double? isa21 { get; set; }
+            public double? isa22 { get; set; }
+            public double? isa23 { get; set; }
+            public double? isa2 { get; set; }
+            public double? isa3 { get; set; }
+            public double? isa4 { get; set; }
+            public double? isa5 { get; set; }
+            public double? isa6 { get; set; }
+            public double? isa7 { get; set; }
+            public double? isa8 { get; set; }
+            public double? isa15 { get; set; }
+            public double? isa9 { get; set; }
+            public double? isa10 { get; set; }
+            public double? isa12 { get; set; }
+            public double? isa13 { get; set; }
+            public double? isa14 { get; set; }
+            public double? isa24 { get; set; }
+            public double? isa102 { get; set; }
             public double? isi103 { get; set; }
             public double? isi104 { get; set; }
             public double? isi51 { get; set; }
@@ -569,9 +569,9 @@ namespace StockFilterToolsV1.Models
             public double? iss165 { get; set; }
             public double? iss166 { get; set; }
             public double? iss167 { get; set; }
-            public double cfa2 { get; set; }
-            public double ebit { get; set; }
-            public double ebitDa { get; set; }
+            public double? cfa2 { get; set; }
+            public double? ebit { get; set; }
+            public double? ebitDa { get; set; }
         }
         public class Yearly
         {
@@ -582,10 +582,10 @@ namespace StockFilterToolsV1.Models
             public double? isb30 { get; set; }
             public double? isb38 { get; set; }
             public double? isb41 { get; set; }
-            public double isa20 { get; set; }
-            public double isa1 { get; set; }
-            public double isa11 { get; set; }
-            public double rtq29 { get; set; }
+            public double? isa20 { get; set; }
+            public double? isa1 { get; set; }
+            public double? isa11 { get; set; }
+            public double? rtq29 { get; set; }
             public double? isb25 { get; set; }
             public double? isb26 { get; set; }
             public double? isb28 { get; set; }
@@ -599,28 +599,28 @@ namespace StockFilterToolsV1.Models
             public double? isb37 { get; set; }
             public double? isb39 { get; set; }
             public double? isb40 { get; set; }
-            public double isa16 { get; set; }
-            public double isa17 { get; set; }
-            public double isa18 { get; set; }
-            public double isa19 { get; set; }
-            public double isa21 { get; set; }
-            public double isa22 { get; set; }
-            public double isa23 { get; set; }
-            public double isa2 { get; set; }
-            public double isa3 { get; set; }
-            public double isa4 { get; set; }
-            public double isa5 { get; set; }
-            public double isa6 { get; set; }
-            public double isa7 { get; set; }
-            public double isa8 { get; set; }
-            public double isa15 { get; set; }
-            public double isa9 { get; set; }
-            public double isa10 { get; set; }
-            public double isa12 { get; set; }
-            public double isa13 { get; set; }
-            public double isa14 { get; set; }
-            public double isa24 { get; set; }
-            public double isa102 { get; set; }
+            public double? isa16 { get; set; }
+            public double? isa17 { get; set; }
+            public double? isa18 { get; set; }
+            public double? isa19 { get; set; }
+            public double? isa21 { get; set; }
+            public double? isa22 { get; set; }
+            public double? isa23 { get; set; }
+            public double? isa2 { get; set; }
+            public double? isa3 { get; set; }
+            public double? isa4 { get; set; }
+            public double? isa5 { get; set; }
+            public double? isa6 { get; set; }
+            public double? isa7 { get; set; }
+            public double? isa8 { get; set; }
+            public double? isa15 { get; set; }
+            public double? isa9 { get; set; }
+            public double? isa10 { get; set; }
+            public double? isa12 { get; set; }
+            public double? isa13 { get; set; }
+            public double? isa14 { get; set; }
+            public double? isa24 { get; set; }
+            public double? isa102 { get; set; }
             public double? isi103 { get; set; }
             public double? isi104 { get; set; }
             public double? isi51 { get; set; }
@@ -752,9 +752,9 @@ namespace StockFilterToolsV1.Models
             public double? iss165 { get; set; }
             public double? iss166 { get; set; }
             public double? iss167 { get; set; }
-            public double cfa2 { get; set; }
-            public double ebit { get; set; }
-            public double ebitDa { get; set; }
+            public double? cfa2 { get; set; }
+            public double? ebit { get; set; }
+            public double? ebitDa { get; set; }
         }
     }
     
