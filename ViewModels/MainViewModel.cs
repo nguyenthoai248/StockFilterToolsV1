@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using StockFilterToolsV1.Models;
 using StockFilterToolsV1.Services;
+using StockFilterToolsV1.Views;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
@@ -33,6 +34,7 @@ namespace StockFilterToolsV1.ViewModels
         private string noData = "#";
         public ICommand FetchCommand { get; }
         public ICommand SyncDataCommand { get; }
+        public ICommand FilterDataCommand { get; }
 
         public MainViewModel()
         {
@@ -49,6 +51,10 @@ namespace StockFilterToolsV1.ViewModels
             _syncService = new SyncService();
             _databaseService = new DatabaseService();
             SyncDataCommand = new RelayCommand(SyncData);
+            FilterDataCommand = new RelayCommand(BtnFilter_Click);
+
+            // Mặc định lấy dữ liệu cho mã cổ phiếu MWG
+            FetchCommand.Execute("MWG");
 
             //Style
             rowHeaderCellStyle.Setters.Add(new Setter(TextBlock.FontWeightProperty, FontWeights.Bold));
@@ -64,8 +70,36 @@ namespace StockFilterToolsV1.ViewModels
 
         private async void SyncData(object obj)
         {
+            MessageBox.Show("Đang cập nhật dữ liệu mới. Vui lòng không tắt phần mềm cho đến khi nhận được thông báo cập nhật xong!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             await _syncService.SyncAllData();
+            MessageBox.Show("Đã cập nhật xong dữ liệu mới nhất!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void BtnFilter_Click(object obj)
+        {
+            var filterWindow = new FilterWindow();
+            if (filterWindow.ShowDialog() == true)
+            {
+                //var condition = filterWindow.Condition;
+                //ApplyFilter(condition);
+            }
+        }
+
+        //private void ApplyFilter(FilterCondition condition)
+        //{
+        //    var filtered = allData.Where(item =>
+        //        (
+        //            (condition.DoanhSoThuan == null || item.DoanhSoThuan > condition.DoanhSoThuan) ||
+        //            (condition.EPS == null || item.EPS > condition.EPS) ||
+        //            (condition.LoiNhuanSauThue == null || item.LoiNhuanSauThue > condition.LoiNhuanSauThue)
+        //        )
+        //        &&
+        //        (!condition.ApplyDK4 || item.BienLaiGopTang)
+        //    ).ToList();
+
+        //    myDataGrid.ItemsSource = filtered;
+        //}
+
         private async Task LoadDataAsync(string symbol)
         {
             try

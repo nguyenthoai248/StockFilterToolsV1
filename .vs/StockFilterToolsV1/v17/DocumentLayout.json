@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\views\\filterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:views\\filterwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\models\\datarow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:models\\datarow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\views\\filterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:views\\filterwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\services\\syncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:services\\syncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\utils\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:utils\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\models\\datarow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:models\\datarow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\models\\balancesheetmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,16 +47,8 @@
       "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:models\\incomestatementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\services\\syncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:services\\syncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Downloads\\SyncServiceExample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -56,10 +68,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\utils\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|solutionrelative:utils\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F654BE27-8B58-43BC-8BBB-7A55DC785A05}|StockFilterToolsV1.csproj|e:\\programingworkspace\\stocktools\\thang\\stockfiltertoolsv1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -88,7 +96,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -96,7 +104,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "FilterWindow.xaml.cs",
+              "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\FilterWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\FilterWindow.xaml.cs",
+              "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\FilterWindow.xaml.cs",
+              "RelativeToolTip": "Views\\FilterWindow.xaml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T16:56:04.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FilterWindow.xaml",
+              "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\FilterWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\FilterWindow.xaml",
+              "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\FilterWindow.xaml*",
+              "RelativeToolTip": "Views\\FilterWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-08T16:53:22.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "DataRow.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Models\\DataRow.cs",
               "RelativeDocumentMoniker": "Models\\DataRow.cs",
@@ -104,25 +137,24 @@
               "RelativeToolTip": "Models\\DataRow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T17:15:59.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T17:15:59.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
               "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\MainWindow.xaml.cs",
               "RelativeToolTip": "Views\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAANjMzMzP7vxoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T17:00:55.08Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "BalanceSheetModel.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Models\\BalanceSheetModel.cs",
               "RelativeDocumentMoniker": "Models\\BalanceSheetModel.cs",
@@ -130,8 +162,7 @@
               "RelativeToolTip": "Models\\BalanceSheetModel.cs",
               "ViewState": "AgIAAIIDAAAAAAAAAIA8wJMDAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:04:30.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-06T19:04:30.626Z"
             },
             {
               "$type": "Document",
@@ -141,14 +172,14 @@
               "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
               "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Services\\DatabaseService.cs",
               "RelativeToolTip": "Services\\DatabaseService.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAEwFUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwv2oAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T04:03:26.78Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "BoolToVisibilityConverter.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Utils\\BoolToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Utils\\BoolToVisibilityConverter.cs",
@@ -161,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "AsyncRelayCommand.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\ViewModels\\AsyncRelayCommand.cs",
               "RelativeDocumentMoniker": "ViewModels\\AsyncRelayCommand.cs",
@@ -173,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "RelayCommand.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\ViewModels\\RelayCommand.cs",
               "RelativeDocumentMoniker": "ViewModels\\RelayCommand.cs",
@@ -185,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Organization.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Models\\Organization.cs",
               "RelativeDocumentMoniker": "Models\\Organization.cs",
@@ -193,8 +224,7 @@
               "RelativeToolTip": "Models\\Organization.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T12:00:31.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T12:00:31.259Z"
             },
             {
               "$type": "Document",
@@ -204,14 +234,14 @@
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
               "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAkwGgAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAACAmZmZmfkzwDcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-17T03:53:47.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
@@ -223,7 +253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -235,19 +265,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 7,
               "Title": "Config.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Utils\\Config.cs",
               "RelativeDocumentMoniker": "Utils\\Config.cs",
               "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Utils\\Config.cs",
               "RelativeToolTip": "Utils\\Config.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T04:03:10.977Z"
+              "WhenOpened": "2025-05-17T04:03:10.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ApiService.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Services\\ApiService.cs",
               "RelativeDocumentMoniker": "Services\\ApiService.cs",
@@ -259,19 +290,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "SyncService.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Services\\SyncService.cs",
               "RelativeDocumentMoniker": "Services\\SyncService.cs",
               "ToolTip": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Services\\SyncService.cs",
               "RelativeToolTip": "Services\\SyncService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowBQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T04:01:10.338Z"
+              "WhenOpened": "2025-05-17T04:01:10.338Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "IncomeStatementModel.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\Models\\IncomeStatementModel.cs",
               "RelativeDocumentMoniker": "Models\\IncomeStatementModel.cs",
@@ -279,12 +311,11 @@
               "RelativeToolTip": "Models\\IncomeStatementModel.cs",
               "ViewState": "AgIAAFQCAAAAAAAAAAAUwFgCAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T03:59:34.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T03:59:34.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "SyncServiceExample.cs",
               "DocumentMoniker": "D:\\Downloads\\SyncServiceExample.cs",
               "ToolTip": "D:\\Downloads\\SyncServiceExample.cs",
@@ -294,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\Tnonymous\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs",
               "ToolTip": "C:\\Users\\Tnonymous\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs [Read Only]",
@@ -304,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -316,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "StockFilterToolsV1.csproj",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\StockFilterToolsV1.csproj",
               "RelativeDocumentMoniker": "StockFilterToolsV1.csproj",
@@ -328,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "E:\\ProgramingWorkspace\\StockTools\\Thang\\StockFilterToolsV1\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "AssemblyInfo.cs",
