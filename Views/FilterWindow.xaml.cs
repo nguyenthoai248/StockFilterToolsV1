@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockFilterToolsV1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace StockFilterToolsV1.Views
     /// </summary>
     public partial class FilterWindow : Window
     {
+        public FilterCondition mFilterCondition { get; set; }
         public FilterWindow()
         {
             InitializeComponent();
@@ -26,13 +28,13 @@ namespace StockFilterToolsV1.Views
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-            //Condition = new FilterCondition
-            //{
-            //    DoanhSoThuan = decimal.TryParse(txtDoanhSoThuan.Text, out var d1) ? d1 : (decimal?)null,
-            //    EPS = decimal.TryParse(txtEPS.Text, out var d2) ? d2 : (decimal?)null,
-            //    LoiNhuanSauThue = decimal.TryParse(txtLoiNhuan.Text, out var d3) ? d3 : (decimal?)null,
-            //    ApplyDK4 = chkDK4.IsChecked == true
-            //};
+            mFilterCondition = new FilterCondition
+            {
+                DoanhSoThuan = decimal.TryParse(txtDoanhSoThuan.Text, out var d1) ? d1 : (decimal?)null,
+                EPS = decimal.TryParse(txtEPS.Text, out var d2) ? d2 : (decimal?)null,
+                LoiNhuanSauThue = decimal.TryParse(txtLoiNhuan.Text, out var d3) ? d3 : (decimal?)null,
+                ApplyDK4 = chkDK4.IsChecked == true
+            };
 
             this.DialogResult = true;
             this.Close();

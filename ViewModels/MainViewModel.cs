@@ -6,6 +6,7 @@ using StockFilterToolsV1.Services;
 using StockFilterToolsV1.Views;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace StockFilterToolsV1.ViewModels
     {
         private readonly SyncService _syncService;
         private readonly DatabaseService _databaseService;
+        private readonly StockFilterService _stockFilterService;
         [ObservableProperty] private ObservableCollection<DataGridColumn> stockDataColumns = new();
         [ObservableProperty] private ObservableCollection<DataRow> stockDataRows = new();
         [ObservableProperty] private string companyName = string.Empty;
@@ -50,6 +52,7 @@ namespace StockFilterToolsV1.ViewModels
             param => !string.IsNullOrWhiteSpace(param));
             _syncService = new SyncService();
             _databaseService = new DatabaseService();
+            _stockFilterService = new StockFilterService();
             SyncDataCommand = new RelayCommand(SyncData);
             FilterDataCommand = new RelayCommand(BtnFilter_Click);
 
@@ -75,30 +78,21 @@ namespace StockFilterToolsV1.ViewModels
             MessageBox.Show("Đã cập nhật xong dữ liệu mới nhất!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void BtnFilter_Click(object obj)
+        private async void BtnFilter_Click(object obj)
         {
             var filterWindow = new FilterWindow();
             if (filterWindow.ShowDialog() == true)
             {
-                //var condition = filterWindow.Condition;
-                //ApplyFilter(condition);
+                var condition = filterWindow.mFilterCondition;
+                var result = await _stockFilterService.LoadAndFilterStockDataAsync(condition.DoanhSoThuan, condition.EPS, condition.LoiNhuanSauThue, condition.ApplyDK4);
+                
+                Debug.WriteLine("Ket qua loc: ");
+                for (int i = 0; i < result.Count; i++) 
+                {
+                    Debug.Write(result[i] + ", ");
+                }
             }
         }
-
-        //private void ApplyFilter(FilterCondition condition)
-        //{
-        //    var filtered = allData.Where(item =>
-        //        (
-        //            (condition.DoanhSoThuan == null || item.DoanhSoThuan > condition.DoanhSoThuan) ||
-        //            (condition.EPS == null || item.EPS > condition.EPS) ||
-        //            (condition.LoiNhuanSauThue == null || item.LoiNhuanSauThue > condition.LoiNhuanSauThue)
-        //        )
-        //        &&
-        //        (!condition.ApplyDK4 || item.BienLaiGopTang)
-        //    ).ToList();
-
-        //    myDataGrid.ItemsSource = filtered;
-        //}
 
         private async Task LoadDataAsync(string symbol)
         {
