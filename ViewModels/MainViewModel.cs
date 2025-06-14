@@ -84,8 +84,16 @@ namespace StockFilterToolsV1.ViewModels
             if (filterWindow.ShowDialog() == true)
             {
                 var condition = filterWindow.mFilterCondition;
-                var result = await _stockFilterService.LoadAndFilterStockDataAsync(condition.DoanhSoThuan, condition.EPS, condition.LoiNhuanSauThue, condition.ApplyDK4);
-                
+                var selectedFilter = condition.SelectedFilter;
+                var result = new List<string>();
+                if (selectedFilter == 1 || selectedFilter == 2) 
+                {
+                    result = await _stockFilterService.Filter1And2Async(selectedFilter, condition.DoanhSoThuan, condition.EPS, condition.LoiNhuanSauThue, condition.ApplyDK4);
+                } else if (selectedFilter == 3) 
+                {
+                    result = await _stockFilterService.Filter3Async(condition.TocDoChiemDungVon, condition.TocDoTrienKhaiDA);
+                }
+
                 Debug.WriteLine("Ket qua loc: ");
                 for (int i = 0; i < result.Count; i++) 
                 {
@@ -163,7 +171,10 @@ namespace StockFilterToolsV1.ViewModels
                 var quarters = new List<string>();
 
                 var quarterDataSize = 0;
-                quarterDataSize = incomeStatementObj.items[0].quarterly.Count;
+                if (incomeStatementObj.items.Count <= 0 || balanceSheetObj.items.Count <= 0) return;
+                quarterDataSize = incomeStatementObj.items[0].quarterly.Count < balanceSheetObj.items[0].quarterly.Count 
+                    ? incomeStatementObj.items[0].quarterly.Count : balanceSheetObj.items[0].quarterly.Count;
+
                 if (quarterDataSize > 12)
                     quarterDataSize = 12;
                 if (quarterDataSize <= 0)
@@ -366,6 +377,7 @@ namespace StockFilterToolsV1.ViewModels
                             "Thu trước tiền của khách hàng",
                             "Tốc độ chiếm dụng vốn của khách hàng",
                             "Tốc độ triển khai dự án",
+                            "Tốc độ tăng trưởng tài sản dở dang dài hạn",
                             "Tỷ trọng khoản phải thu",
                             "Tốc độ tăng trưởng LNST",
                             "Thu nhập ngoài lãi",
@@ -421,18 +433,21 @@ namespace StockFilterToolsV1.ViewModels
                             dataRow.QuarterlyValues.Add(CalculateProjectImplementSpeed(balanceSheetObj, j));
                             break;
                         case 11:
-                            dataRow.QuarterlyValues.Add(CalculateReceivablesRatio(balanceSheetObj, j));
+                            dataRow.QuarterlyValues.Add(CalculateLongTermCipGrowth(balanceSheetObj, j));
                             break;
                         case 12:
-                            dataRow.QuarterlyValues.Add(CalculateNetProfitGrowthRate(incomeStatementObj, j));
+                            dataRow.QuarterlyValues.Add(CalculateReceivablesRatio(balanceSheetObj, j));
                             break;
                         case 13:
-                            dataRow.QuarterlyValues.Add(CalculateNonInterestIncome(incomeStatementObj, j));
+                            dataRow.QuarterlyValues.Add(CalculateNetProfitGrowthRate(incomeStatementObj, j));
                             break;
                         case 14:
-                            dataRow.QuarterlyValues.Add(CalculateNetInterestIncomeGrowth(incomeStatementObj, j));
+                            dataRow.QuarterlyValues.Add(CalculateNonInterestIncome(incomeStatementObj, j));
                             break;
                         case 15:
+                            dataRow.QuarterlyValues.Add(CalculateNetInterestIncomeGrowth(incomeStatementObj, j));
+                            break;
+                        case 16:
                             dataRow.QuarterlyValues.Add(CalculateNonInterestIncomeGrowth(incomeStatementObj, j));
                             break;
                     }
@@ -456,6 +471,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetNetRevenueGrowthRate(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var result = (thisQData.isa3 - thisQLastYearData.isa3) / thisQLastYearData.isa3;
@@ -465,6 +482,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetNetProfitGrowthRate(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var result = (thisQData.isa20 - thisQLastYearData.isa20) / thisQLastYearData.isa20;
@@ -474,6 +493,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetEpsGrowthRate(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var result = (thisQData.isa23 - thisQLastYearData.isa23) / thisQLastYearData.isa23;
@@ -483,6 +504,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetInventoryGrowthRate(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            var quarterlySize = balanceSheetObj.items[0].quarterly.Count;
+            if (balanceSheetObj.items.Count <= 0 || j + 1 >= quarterlySize) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var prevQData = balanceSheetObj.items[0].quarterly[j + 1];
             var result = (thisQData.bsa15 - prevQData.bsa15) / prevQData.bsa15;
@@ -492,6 +515,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetAccReceivableGrowthRate(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            var quarterlySize = balanceSheetObj.items[0].quarterly.Count;
+            if (balanceSheetObj.items.Count <= 0 || j + 1 >= quarterlySize) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var prevQData = balanceSheetObj.items[0].quarterly[j + 1];
             var result = (thisQData.bsa8 - prevQData.bsa8) / prevQData.bsa8;
@@ -501,6 +526,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetNetProfitMargin(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var result = thisQData.isa20 / thisQData.isa3;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
@@ -509,6 +536,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string GetGrossProfitMargin(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var result = thisQData.isa5 / thisQData.isa3;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
@@ -517,6 +546,7 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateProjectProgress(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            if (balanceSheetObj.items.Count <= 0) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var result = thisQData.bsa15 + thisQData.bsa163;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
@@ -525,6 +555,7 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateAdvanceReceipts(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            if (balanceSheetObj.items.Count <= 0) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var result = thisQData.bsa58 + thisQData.bsa63 + thisQData.bsa69 + thisQData.bsa73;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
@@ -533,6 +564,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateCapitalOccupationRate(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            var quarterlySize = balanceSheetObj.items[0].quarterly.Count;
+            if (balanceSheetObj.items.Count <= 0 || j + 1 >= quarterlySize) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var prevQData = balanceSheetObj.items[0].quarterly[j + 1];
             var thisQAdvanceReceipt = thisQData.bsa58 + thisQData.bsa63 + thisQData.bsa69 + thisQData.bsa73;
@@ -544,6 +577,8 @@ namespace StockFilterToolsV1.ViewModels
         
         private string CalculateProjectImplementSpeed(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            var quarterlySize = balanceSheetObj.items[0].quarterly.Count;
+            if (balanceSheetObj.items.Count <= 0 || j + 1 >= quarterlySize) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var prevQData = balanceSheetObj.items[0].quarterly[j + 1];
             var thisQProjectProgress = thisQData.bsa15 + thisQData.bsa163;
@@ -555,13 +590,28 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateReceivablesRatio(Models.BalanceSheetModel balanceSheetObj, int j)
         {
+            if (balanceSheetObj.items.Count <= 0) return "#";
             var thisQData = balanceSheetObj.items[0].quarterly[j];
             var result = thisQData.bsa8 / thisQData.bsa1;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
             return formattedResult;
         }
+
+        private string CalculateLongTermCipGrowth(Models.BalanceSheetModel balanceSheetObj, int j)
+        {
+            var quarterlySize = balanceSheetObj.items[0].quarterly.Count;
+            if (balanceSheetObj.items.Count <= 0 || j + 1 >= quarterlySize) return "#";
+            var thisQData = balanceSheetObj.items[0].quarterly[j];
+            var prevQData = balanceSheetObj.items[0].quarterly[j + 1];
+            var result = (thisQData.bsa163 - prevQData.bsa163) / prevQData.bsa163;
+            var formattedResult = (result * 100)?.ToString("F2") + "%";
+            return formattedResult;
+        }
+        
         private string CalculateNetProfitGrowthRate(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var result = (thisQData.isa20 - thisQLastYearData.isa20) / thisQData.isa20;
@@ -570,6 +620,7 @@ namespace StockFilterToolsV1.ViewModels
         }
         private string CalculateNonInterestIncome(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            if (incomeStatementObj.items.Count <= 0) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var result = thisQData.isb30 + thisQData.isa14;
             var formattedResult = (result * 100)?.ToString("F2") + "%";
@@ -578,6 +629,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateNetInterestIncomeGrowth(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var result = (thisQData.isb27 - thisQLastYearData.isb27) / thisQLastYearData.isb27;
@@ -587,6 +640,8 @@ namespace StockFilterToolsV1.ViewModels
 
         private string CalculateNonInterestIncomeGrowth(Models.IncomeStatementModel incomeStatementObj, int j)
         {
+            var quarterlySize = incomeStatementObj.items[0].quarterly.Count;
+            if (incomeStatementObj.items.Count <= 0 || j + 4 >= quarterlySize) return "#";
             var thisQData = incomeStatementObj.items[0].quarterly[j];
             var thisQLastYearData = incomeStatementObj.items[0].quarterly[j + 4];
             var thisQNII = thisQData.isb30 + thisQData.isa14;

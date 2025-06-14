@@ -1,43 +1,94 @@
 ﻿<Window x:Class="StockFilterToolsV1.Views.FilterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bộ lọc dữ liệu" Height="250" Width="450"
+        Title="Bộ lọc dữ liệu" Height="500" Width="550"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="170"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <!-- Bộ chọn bộ lọc -->
+            <GroupBox Header="Chọn bộ lọc" Grid.Row="0" Margin="0 0 0 10">
+                <StackPanel Orientation="Vertical">
+                    <RadioButton x:Name="rdoFilter1" Content="Bộ lọc 1: (DK1 or DK2 or DK3) and DK4" Checked="Filter_Checked"/>
+                    <RadioButton x:Name="rdoFilter2" Content="Bộ lọc 2: DK1 and DK2 and DK3 and DK4" Checked="Filter_Checked"/>
+                    <RadioButton x:Name="rdoFilter3" Content="Bộ lọc 3 (BĐS): DK1 or DK2" Checked="Filter_Checked"/>
+                    <RadioButton x:Name="rdoFilter4" Content="Bộ lọc 4: DK1 or DK2" Checked="Filter_Checked"/>
+                </StackPanel>
+            </GroupBox>
 
-        <!-- DK1 -->
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Doanh số thuần > (%):"/>
-        <TextBox x:Name="txtDoanhSoThuan" Grid.Row="0" Grid.Column="1" Margin="5"/>
+            <!-- Các điều kiện lọc -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <!-- DK2 -->
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="EPS > (%):"/>
-        <TextBox x:Name="txtEPS" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="270"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <!-- DK3 -->
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Text="Lợi nhuận sau thuế > (%):"/>
-        <TextBox x:Name="txtLoiNhuan" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                <!-- Bộ lọc 1 & 2 -->
+                <StackPanel x:Name="panelFilter1" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Doanh số thuần > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtDoanhSoThuan" Margin="5" Width="200"/>
+                </StackPanel>
 
-        <!-- DK4 -->
-        <CheckBox x:Name="chkDK4" Grid.Row="3" Grid.Column="1" Content="Biên lãi gộp tăng so với quý cùng kỳ" Margin="5"/>
+                <StackPanel x:Name="panelFilter2" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="EPS > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtEPS" Margin="5" Width="200"/>
+                </StackPanel>
 
-        <!-- Buttons -->
-        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-            <Button Content="Áp dụng" Width="80" Margin="5" Click="Apply_Click"/>
-            <Button Content="Hủy" Width="80" Margin="5" Click="Cancel_Click"/>
-        </StackPanel>
-    </Grid>
+                <StackPanel x:Name="panelFilter3" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Lợi nhuận sau thuế > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtLoiNhuan" Margin="5" Width="200"/>
+                </StackPanel>
+
+                <StackPanel x:Name="panelFilter4" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Width="270"/>
+                    <CheckBox x:Name="chkDK4" Content="Biên lãi gộp tăng so với quý cùng kỳ" Margin="5"/>
+                </StackPanel>
+
+                <!-- Bộ lọc 3 -->
+                <StackPanel x:Name="panelFilter5" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Tốc độ chiếm dụng vốn của KH > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtChiemDungVon" Margin="5" Width="200"/>
+                </StackPanel>
+
+                <StackPanel x:Name="panelFilter6" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Tốc độ triển khai dự án > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtTrienKhaiDuAn" Margin="5" Width="200"/>
+                </StackPanel>
+
+                <!-- Bộ lọc 4 -->
+                <StackPanel x:Name="panelFilter7" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Tăng trưởng TSDD dài hạn > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtTSDD" Margin="5" Width="200"/>
+                </StackPanel>
+
+                <StackPanel x:Name="panelFilter8" Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <TextBlock Text="Tăng trưởng hàng tồn kho > (%):" Width="270" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtTonKho" Margin="5" Width="200"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Button Content="Áp dụng" Width="80" Margin="5" Click="Apply_Click"/>
+                <Button Content="Hủy" Width="80" Margin="5" Click="Cancel_Click"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Window>
-
